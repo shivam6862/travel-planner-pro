@@ -2,7 +2,7 @@ import PlaceCard from "../Components/PlaceCard";
 import SelectPlace from "../Components/SelectPlace";
 import Auth from "../Components/Authentication/Auth";
 import classes from "../styles/Home.module.css";
-
+import Footer from "../Components/Footer";
 
 export default function Home() {
   const place = {
@@ -21,10 +21,7 @@ export default function Home() {
       <PlaceCard place={place} />
       <SelectPlace />
       <Auth />
+      <Footer />
     </div>
   );
-  return (
-    <>
-    </>
-  )
 }
