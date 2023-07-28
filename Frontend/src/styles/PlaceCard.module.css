@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 400px;
+  border: 2px solid var(--yellow-color);
+  box-shadow: var(--box-shadow);
+}
+.top_placeCard {
+  position: relative;
+}
+.top_placeCard > img {
+  object-fit: cover;
+}
+.top_bottom_location {
+  position: absolute;
+  top: 91%;
+  left: 5%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-color);
+  background: var(--yellow-color);
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  padding: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.6rem 1.4rem;
+}
+.bottom_card {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: -webkit-fill-available;
+  padding: 1rem;
+}
+.bottom_card_first {
+  width: -webkit-fill-available;
+}
+.bottom_card_first > h1 {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+.bottom_card_first > p {
+  font-size: 0.8rem;
+  padding: 0;
+  margin: 0;
+  line-height: 1.1rem;
+}
+.bottom_card_second {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  width: -webkit-fill-available;
+}
+.bottom_card_second_left {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+.bottom_card_second_right {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+.bottom_card_second_left > h2 {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 0.25rem;
+}
+.bottom_card_second_right > h2 {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 0.25rem;
+}
+.bottom_card_third {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  width: -webkit-fill-available;
+}
+.bottom_card_third_left {
+  font-size: 2rem;
+  line-height: 4rem;
+  color: var(--dark-color);
+}
+.bottom_card_third_right {
+  width: 120px;
+}
