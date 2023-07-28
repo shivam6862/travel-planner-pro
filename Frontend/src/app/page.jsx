@@ -3,6 +3,7 @@ import SelectPlace from "../Components/SelectPlace";
 import Auth from "../Components/Authentication/Auth";
 import classes from "../styles/Home.module.css";
 
+
 export default function Home() {
   const place = {
     image: "Greece.jpg",
@@ -22,4 +23,8 @@ export default function Home() {
       <Auth />
     </div>
   );
+  return (
+    <>
+    </>
+  )
 }

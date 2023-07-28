@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 
 const AuthenticationContext = createContext({
   open: {
-    signupOpen: true,
+    signupOpen: false,
     ResetPasswordOpen: false,
     LogInOpen: false,
     error: "",
@@ -20,7 +20,7 @@ const AuthenticationContext = createContext({
 
 export const AuthenticationContextProvider = ({ children }) => {
   const [open, setOpen] = useState({
-    signupOpen: true,
+    signupOpen: false,
     ResetPasswordOpen: false,
     LogInOpen: false,
     error: "",
