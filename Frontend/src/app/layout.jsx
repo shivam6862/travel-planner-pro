@@ -1,17 +1,22 @@
 import "../styles/globals.css";
 import { Inter } from "next/font/google";
-
+import { AuthenticationContextProvider } from "../Store/Authentication-context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Next Auth",
+  title: "Travel Planner",
   description: "by puspendra",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <link rel="icon" href="/logo.jpeg" />
+      <body className={inter.className}>
+        <AuthenticationContextProvider>
+          {children}
+        </AuthenticationContextProvider>
+      </body>
     </html>
   );
 }
