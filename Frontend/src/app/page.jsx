@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import PlaceCard from "../components/PlaceCard/PlaceCard";
 import SelectPlace from "../components/SelectPlace";
 import Auth from "../components/Authentication/Auth";
@@ -6,13 +8,30 @@ import Vacation from "../components/Vacation/Vacation";
 import Reviews from "../components/Reviews/Reviews";
 import CompanyMember from "../components/CompanyMember/CompanyMember";
 import About from "../components/About/About";
+import Map from "../components/NewMap";
+
+// const getData = async () => {
+//   const response = await fetch(
+//     "https://test.api.amadeus.com/v1/reference-data/locations/cities?countryCode=IN&keyword=DELHI&max=5&include=AIRPORTS",
+//     {
+//       headers: {
+//         Authorization: "Bearer " + process.env.AMADEUS_ACCESS_TOKEN,
+//       },
+//     }
+//   );
+//   return await response.json();
+// };
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState([]);
+  // const data = await getData();
+  // console.log(data.data[1].geoCode);
   return (
     <div className={classes.container}>
       <Auth />
       <About />
-      <SelectPlace />
+      <SelectPlace setSearchTerm={setSearchTerm} />
+      <Map searchTerm={searchTerm} />
       <PlaceCard />
       <Vacation />
       <Reviews />

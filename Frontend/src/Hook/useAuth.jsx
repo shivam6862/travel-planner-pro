@@ -1,4 +1,4 @@
-import { useLocationLocalStorage } from "./LocationLocalStorage";
+import { useLocationLocalStorage } from "./useLocationLocalStorage";
 import { useNotification } from "./useNotification";
 
 const useAuth = () => {

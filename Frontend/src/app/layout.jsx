@@ -1,18 +1,20 @@
 "use client";
 import "../styles/globals.css";
+import "../styles/leaflet.css";
 import { Inter } from "next/font/google";
 import { AuthenticationContextProvider } from "../Store/Authentication-context";
 import Navbar from "../components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
-import { useLocationLocalStorage } from "../Hook/LocationLocalStorage";
-import Notifications from "../components/Notification/Notifications";
+import { useLocationLocalStorage } from "../Hook/useLocationLocalStorage";
+import Notifications from "../Components/Notification/Notifications";
 import { NotificationContextProvider } from "../Store/Notification-context";
-import Footer from "../components/Footer";
+import Footer from "../Components/Footer";
+import Script from "next/script";
 
-export const metadata = {
-  title: "Travel Planner",
-  description: "by puspendra",
-};
+// export const metadata = {
+//   title: "Travel Planner",
+//   description: "by puspendra",
+// };
 
 export default function RootLayout({ children }) {
   const { fetchPersonalDetails } = useLocationLocalStorage();
@@ -29,6 +31,10 @@ export default function RootLayout({ children }) {
             <Footer />
           </AuthenticationContextProvider>
         </NotificationContextProvider>
+        <Script
+          src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        />
       </body>
     </html>
   );

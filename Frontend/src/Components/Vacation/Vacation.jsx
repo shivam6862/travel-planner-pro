@@ -19,8 +19,8 @@ const Vacation = () => {
     <div className={classes.container}>
       <div className={classes.heading}>Vacation</div>
       <div className={classes.box}>
-        {place.map((item) => (
-          <VacationItem vacation={item} key={item.id} />
+        {place.map((item, index) => (
+          <VacationItem vacation={item} key={index} />
         ))}
       </div>
     </div>

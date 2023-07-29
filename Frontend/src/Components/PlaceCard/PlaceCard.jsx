@@ -31,8 +31,8 @@ const PlaceCard = () => {
     <div className={classes.container}>
       <div className={classes.heading}>Place </div>
       <div className={classes.box}>
-        {place.map((item) => (
-          <PlaceCardItem place={item} key={item.id} />
+        {place.map((item, index) => (
+          <PlaceCardItem place={item} key={index} />
         ))}
       </div>
     </div>
