@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   const userdet = fetchPersonalDetails();
   return (
     <html lang="en">
-      <link rel="icon" href="/logo.jpeg" />
+      <link rel="icon" href="/logo1.jpeg" />
       <body className={inter.className}>
         <AuthenticationContextProvider>
           <Navbar userdet={userdet} />
