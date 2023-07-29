@@ -62,7 +62,7 @@ const LogIn = () => {
             <div className={classes.underline}> </div>
           </div>
           <div className={classes.part1_right}>
-            <img src="/logo.jpeg" alt="" />
+            <img src="/logo1.jpeg" alt="" />
           </div>
         </div>
         <div className={classes.form}>
