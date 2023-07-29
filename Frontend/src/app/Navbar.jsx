@@ -222,10 +222,12 @@ const Navbar = ({ userdet }) => {
                       </Button>
                     ))}
               </Box>
-              <Box sx={{
-                display:'flex',
-                ml:5,
-              }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  ml: 5,
+                }}
+              >
                 {/* <SearchInput/> */}
               </Box>
               {userdet ? (

@@ -1,5 +1,6 @@
 .container {
   width: 90vw;
+  box-sizing: border-box;
 }
 .heading {
   font-size: 2rem;
@@ -16,6 +17,7 @@
   flex-wrap: wrap;
   gap: 3rem;
   width: 100%;
+  box-sizing: border-box;
 }
 .containerItem {
   display: flex;
@@ -23,9 +25,10 @@
   align-content: center;
   align-items: flex-start;
   justify-content: space-between;
-  max-width: 400px;
+  width: 400px;
   border: 2px solid var(--yellow-color);
   box-shadow: var(--box-shadow);
+  overflow: hidden;
 }
 .top_placeCard {
   overflow: hidden;

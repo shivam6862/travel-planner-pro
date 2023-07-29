@@ -16,6 +16,7 @@
   flex-wrap: wrap;
   gap: 3rem;
   width: 100%;
+  box-sizing: border-box;
 }
 .containerItem {
   max-width: 400px;
