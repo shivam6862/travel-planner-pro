@@ -30,7 +30,6 @@
   align-items: flex-start;
   justify-content: center;
   min-width: 380px;
-  width: 100%;
 }
 .close {
   cursor: pointer;
@@ -139,15 +138,16 @@
   }
 }
 .resetcontainer {
-  width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white-light-color);
 }
 @media screen and (max-width: 600px) {
   .resetcontainer {
-    width: 80vw;
+    width: 100vw;
+    padding: 1rem;
   }
 }
 .wronguser {

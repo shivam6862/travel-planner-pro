@@ -2,7 +2,7 @@ import { useLocationLocalStorage } from "./LocationLocalStorage";
 import { useNotification } from "./useNotification";
 
 const useAuth = () => {
-  const { NotificationHook } = useNotification();
+  const { NotificationHandler } = useNotification();
   const { updatePersonalDetails } = useLocationLocalStorage();
   const Auth = async (data, type) => {
     try {
@@ -15,7 +15,7 @@ const useAuth = () => {
         body: JSON.stringify(data),
       });
       const responsedata = await response.json();
-      NotificationHook(responsedata.message, responsedata.type);
+      NotificationHandler(responsedata.message, responsedata.type);
       if (
         (responsedata.type == "Success" && type == "signin") ||
         (responsedata.type == "Success" && type == "newPassword")
@@ -25,7 +25,7 @@ const useAuth = () => {
       return responsedata.type;
     } catch (err) {
       console.log(err);
-      NotificationHook("Check your connection!", "Error");
+      NotificationHandler("Check your connection!", "Error");
       return "false";
     }
   };

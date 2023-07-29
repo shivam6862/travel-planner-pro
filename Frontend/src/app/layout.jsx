@@ -2,9 +2,12 @@
 import "../styles/globals.css";
 import { Inter } from "next/font/google";
 import { AuthenticationContextProvider } from "../Store/Authentication-context";
-import Navbar from "./Navbar";
+import Navbar from "../Components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 import { useLocationLocalStorage } from "../Hook/LocationLocalStorage";
+import Notifications from "../Components/Notification/Notifications";
+import { NotificationContextProvider } from "../Store/Notification-context";
+import Footer from "../Components/Footer";
 
 export const metadata = {
   title: "Travel Planner",
@@ -18,10 +21,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <link rel="icon" href="/logo1.jpeg" />
       <body className={inter.className}>
-        <AuthenticationContextProvider>
-          <Navbar userdet={userdet} />
-          {children}
-        </AuthenticationContextProvider>
+        <NotificationContextProvider>
+          <AuthenticationContextProvider>
+            <Navbar userdet={userdet} />
+            <Notifications />
+            {children}
+            <Footer />
+          </AuthenticationContextProvider>
+        </NotificationContextProvider>
       </body>
     </html>
   );

@@ -12,7 +12,7 @@ import LoadingSpinner from "../../../Components/LoadingSpinner";
 const resetpassword = () => {
   const router = useParams();
   const { token } = router;
-  const { NotificationHook } = useNotification();
+  const { NotificationHandler } = useNotification();
   const [correctUser, setCorrectUser] = useState("0");
   const [backendUserData, setbackendUserData] = useState({
     email: "",
@@ -34,7 +34,7 @@ const resetpassword = () => {
           }
         );
         const responsedata = await response.json();
-        NotificationHook(responsedata.message, responsedata.type);
+        NotificationHandler(responsedata.message, responsedata.type);
         if (responsedata.type == "Error") {
           setCorrectUser("1");
         } else {
