@@ -71,7 +71,7 @@ const Navbar = ({ userdet }) => {
       <AppBar
         position="sticky"
         sx={{
-          background: "green",
+          background: "#c29d59",
         }}
       >
         <Container maxWidth="xl" sx={{}}>

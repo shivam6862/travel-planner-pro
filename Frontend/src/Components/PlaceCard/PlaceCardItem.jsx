@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import classes from "../styles/PlaceCard.module.css";
-import Button from "../Components/Button";
+import classes from "../../styles/PlaceCard.module.css";
+import Button from "../../Components/Button";
 
-const PlaceCard = ({ place }) => {
+const PlaceCardItem = ({ place }) => {
   return (
-    <div className={classes.container}>
+    <div className={classes.containerItem}>
       <div className={classes.top_placeCard}>
         <Image
           src={`/${place.image}`}
@@ -13,9 +13,9 @@ const PlaceCard = ({ place }) => {
           width="400"
           height="250"
         />
-        <div className={classes.top_bottom_location}>{place.location}</div>
       </div>
       <div className={classes.bottom_card}>
+        <div className={classes.bottom_top_location}>{place.location}</div>
         <div className={classes.bottom_card_first}>
           <h3>{place.about}</h3>
           <p>{place.description}</p>
@@ -42,4 +42,4 @@ const PlaceCard = ({ place }) => {
   );
 };
 
-export default PlaceCard;
+export default PlaceCardItem;

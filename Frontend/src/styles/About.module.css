@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6rem;
+  width: 90vw;
+  padding-top: 2rem;
+}
+.left {
+  flex: 2;
+  margin-bottom: 4rem;
+}
+.bigImage {
+  position: relative;
+  width: 400px;
+}
+.bigImage > img {
+  border: 2.5px solid var(--yellow-color);
+  padding: 0.75rem;
+  box-shadow: var(--box-shadow);
+  object-fit: cover;
+  cursor: pointer;
+}
+.smallImage {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  transform: translate(40%, 40%);
+}
+.smallImage > img {
+  border: 2.5px solid var(--yellow-color);
+  padding: 0.5rem;
+  box-shadow: var(--box-shadow);
+  object-fit: cover;
+  cursor: pointer;
+}
+.right {
+  flex: 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 300px;
+  padding-left: 1rem;
+}
+.right > h4 {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+  color: var(--yellow-color);
+}
+.right > h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.right > p {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  padding: 0;
+  margin: 0;
+  line-height: 1.2rem;
+}
+.buttons {
+  width: 170px;
+}
