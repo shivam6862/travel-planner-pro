@@ -75,12 +75,18 @@ const Navbar = ({ userdet }) => {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box sx={{
-              display:'flex',
-              justifyContent:'space-between',
-              alignItems:'center',
-             
-            }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <img src='/logo1.jpeg' height='50px' width={'50px'} style={{
+                mixBlendMode:'multiply',
+                border:'none',
+                boxShadow:'none'
+              }}/>
               <Typography
                 variant="h6"
                 noWrap
@@ -94,7 +100,7 @@ const Navbar = ({ userdet }) => {
                   // letterSpacing: ".3rem",
                   color: "black",
                   textDecoration: "none",
-                  fontSize:'1.5rem',
+                  fontSize: "1.5rem",
                 }}
               >
                 Travel Planner Pro
