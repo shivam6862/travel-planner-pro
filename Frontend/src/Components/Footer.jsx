@@ -39,8 +39,8 @@ const Footer = () => {
     <div className={classes.container}>
       <div className={classes.upperBox}>
         <div className={classes.first}>
-          <p>Made with ❤ in SF & more</p>
-          <p>© 2023 Travelchime Inc.</p>
+          <p>Made with ❤ in NX & more</p>
+          <p>© 2023 Group.com .</p>
         </div>
         <div className={classes.second}>
           {second.map((item, index) => (
