@@ -1,6 +1,7 @@
 "use client";
 import { React, useContext, useState } from "react";
 import AuthenticationContext from "../Store/Authentication-context";
+
 import { useRouter } from "next/navigation";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -22,7 +23,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 // import SearchInput from '../app/SearchInput'
 import LogoutIcon from "@mui/icons-material/Logout";
 // const navselectors = ['Home', 'Iterniaries', 'Deals ']
-const pages = ["Home", "Login"];
+const pages = ["Home", "Pricing", "Login"];
 const pageess = [
   {
     name: "Your Profile",
@@ -70,6 +71,7 @@ const Navbar = ({ userdet }) => {
       <AppBar
         position="sticky"
         sx={{
+
           background: "whitesmoke",
         }}
       >
@@ -180,6 +182,7 @@ const Navbar = ({ userdet }) => {
                       page == "Login"
                         ? authenticationContextCtx.onShow("LogInOpen")
                         : changeRoute.push(`/${page}`);
+
                     }}
                     sx={{
                       my: 2,
@@ -218,27 +221,94 @@ const Navbar = ({ userdet }) => {
                       vertical: "top",
                       horizontal: "right",
                     }}
-                    open={Boolean(anchorElUser)}
-                    onClose={handleCloseUserMenu}
                   >
-                    {pageess.map((pageess) => (
-                      <MenuItem key={pageess} onClick={handleCloseUserMenu}>
-                        {pageess.logo}
-                        <Typography
-                          textAlign="center"
-                          sx={{
-                            justifyContent: "center",
-                            ml: 1,
-                          }}
-                        >
-                          {pageess.name}
-                        </Typography>
-                      </MenuItem>
-                    ))}
-                  </Menu>
-                </Box>
-              ) : null}
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
             </Box>
+            <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href=""
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              LOGO
+            </Typography>
+            {/* ----------------desktop version---------------------------- */}
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    page == "Login"
+                      ? authenticationContextCtx.onShow("LogInOpen")
+                      : changeRoute.push(`/${page}`);
+                  }}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              ))}
+            </Box>
+
+            {userdet ? (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/2.jpg"
+                    />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {pageess.map((pageess) => (
+                    <MenuItem key={pageess} onClick={handleCloseUserMenu}>
+                      {pageess.logo}
+                      <Typography
+                        textAlign="center"
+                        sx={{
+                          justifyContent: "center",
+                          ml: 1,
+                        }}
+                      >
+                        {pageess.name}
+                      </Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            ) : null}
+
           </Toolbar>
         </Container>
       </AppBar>
