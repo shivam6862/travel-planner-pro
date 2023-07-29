@@ -132,7 +132,7 @@ const resetpassword = () => {
       ) : (
         <>
           {correctUser === "1" ? (
-            <div className={classes.wronguser}>You have not authintication</div>
+            <div className={classes.wronguser}>You have not authentication</div>
           ) : (
             <LoadingSpinner />
           )}
