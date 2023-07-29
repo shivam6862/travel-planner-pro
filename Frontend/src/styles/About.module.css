@@ -67,3 +67,23 @@
 .buttons {
   width: 170px;
 }
+@media screen and (max-width: 600px) {
+  .bigImage {
+    width: 300px;
+  }
+  .bigImage > img {
+    width: 300px;
+    height: 300px;
+  }
+  .smallImage > img {
+    width: 150px;
+    height: 120px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

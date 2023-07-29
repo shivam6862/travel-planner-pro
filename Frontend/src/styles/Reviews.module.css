@@ -25,6 +25,7 @@
   padding: 1rem;
   border-bottom: 1px solid var(--yellow-color);
   max-width: 400px;
+  min-width: 400px;
   box-shadow: var(--box-shadow);
 }
 .top {
