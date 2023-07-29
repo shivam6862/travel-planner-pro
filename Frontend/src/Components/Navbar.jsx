@@ -22,7 +22,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import SettingsIcon from "@mui/icons-material/Settings";
 // import SearchInput from '../app/SearchInput'
 import LogoutIcon from "@mui/icons-material/Logout";
-import SearchInput from "./SearchInput";
+// import SearchInput from "./SearchInput";
 // const navselectors = ['Home', 'Iterniaries', 'Deals ']
 const pages = ["Home", "Login"];
 const loginnav = ["Home", "Dashbord", "Itinerary"];
@@ -222,10 +222,12 @@ const Navbar = ({ userdet }) => {
                       </Button>
                     ))}
               </Box>
-              <Box sx={{
-                display:'flex',
-                ml:5,
-              }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  ml: 5,
+                }}
+              >
                 {/* <SearchInput/> */}
               </Box>
               {userdet ? (
