@@ -3,21 +3,31 @@ import SvgStarColor from "../../../Public/SvgStarColor";
 import SvgStarWhite from "../../../Public/SvgStarWhite";
 import classes from "../../styles/Reviews.module.css";
 
-const Star = ({ index }) => {
+const StarReviews = ({ index, setCountStar }) => {
   const maxStars = 5;
-  const coloredStars = Math.min(index, maxStars);
-  const whiteStars = Math.max(maxStars - index, 0);
-  const coloredStarArray = Array(coloredStars)
+  const coloredStarArray = Array(index)
     .fill()
     .map((_, i) => (
-      <div style={{ display: "inline" }} key={`colored-${i}`}>
+      <div
+        style={{ display: "inline" }}
+        onClick={() => {
+          setCountStar(i);
+        }}
+        key={`colored-${i}`}
+      >
         <SvgStarColor />
       </div>
     ));
-  const whiteStarArray = Array(whiteStars)
+  const whiteStarArray = Array(maxStars - index)
     .fill()
     .map((_, i) => (
-      <div style={{ display: "inline" }} key={`white-${i}`}>
+      <div
+        style={{ display: "inline" }}
+        onClick={() => {
+          setCountStar(index + i + 1);
+        }}
+        key={`white-${i}`}
+      >
         <SvgStarWhite />
       </div>
     ));
@@ -29,4 +39,4 @@ const Star = ({ index }) => {
   );
 };
 
-export default Star;
+export default StarReviews;

@@ -3,11 +3,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useNotification } from "../../../Hook/useNotification";
 import Head from "next/head";
-import classes from "../../../Styles/Auth.module.css";
+import classes from "../../../styles/Auth.module.css";
 import useAuth from "../../../Hook/useAuth";
 import SvgOpen from "../../../../Public/SvgOpen";
 import SvgClosed from "../../../../Public/SvgClosed";
-import LoadingSpinner from "../../../Components/LoadingSpinner";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const resetpassword = () => {
   const router = useParams();

@@ -69,7 +69,7 @@ const Footer = () => {
       </div>
       <div className={classes.lowerBox}>
         {logo.map((item, index) => (
-          <Image src={item} alt={index} width="40" height="40" />
+          <Image src={item} alt={index} width="40" height="40" key={index} />
         ))}
       </div>
     </div>
