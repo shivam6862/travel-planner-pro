@@ -10,7 +10,7 @@ const SvgStarColor = () => {
       xmlns="http://www.w3.org/2000/svg"
       stroke="#f6e01e"
     >
-      <g id="SVGRepo_bgCarrier" stroke-width="0" />
+      <g id="SVGRepo_bgCarrier" strokeWidth="0" />
       <g
         id="SVGRepo_tracerCarrier"
         strokeLinecap="round"

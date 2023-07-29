@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useContext } from "react";
-import classes from "../../Styles/Auth.module.css";
+import classes from "../../styles/Auth.module.css";
 import Svgcross from "../../../Public/SvgCross";
 import AuthenticationContext from "../../Store/Authentication-context";
 import useAuth from "../../Hook/useAuth";

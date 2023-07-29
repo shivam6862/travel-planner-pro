@@ -1,8 +1,12 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 import classes from "../../styles/CompanyMember.module.css";
 import CompanyMemberItem from "./CompanyMemberItem";
 
 const CompanyMember = () => {
+  const myref = useRef();
+  const [myElementIsVisible, setMyElementIsVisible] = useState();
+
   const company = [
     {
       company: "Booking.com",
@@ -21,10 +25,22 @@ const CompanyMember = () => {
       id: "3",
     },
   ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setMyElementIsVisible(entry.isIntersecting);
+    });
+    observer.observe(myref.current);
+  }, []);
+
   return (
     <div className={classes.container}>
       <div className={classes.heading}>Our Members</div>
-      <div className={classes.box}>
+      <div
+        className={!myElementIsVisible ? classes.box : `${classes.boxVisible}`}
+        ref={myref}
+      >
         {company.map((item) => (
           <CompanyMemberItem item={item} key={item.id} />
         ))}

@@ -1,11 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ReviewsItem from "./ReviewItem";
 import ReviewsInput from "./ReviewInput";
 
 import classes from "../../styles/Reviews.module.css";
 
 const Reviews = () => {
+  const myref = useRef();
+  const [myElementIsVisible, setMyElementIsVisible] = useState();
   const [data, setData] = useState([]);
   useEffect(() => {
     const callFunction = async () => {
@@ -25,15 +27,28 @@ const Reviews = () => {
     };
     callFunction();
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setMyElementIsVisible(entry.isIntersecting);
+    });
+    observer.observe(myref.current);
+  }, []);
+
   const setDataInput = (data) => {
     setData((prev) => [...prev, data]);
   };
+
   return (
-    <div className={classes.container}>
+    <div className={classes.container} ref={myref}>
       <div className={classes.heading}>Reviews</div>
-      <div className={classes.box}>
-        {data.map((people) => (
-          <ReviewsItem key={people.id} data={people} />
+      <div
+        className={!myElementIsVisible ? classes.box : classes.boxVisible}
+        ref={myref}
+      >
+        {data.map((people, index) => (
+          <ReviewsItem key={index} data={people} />
         ))}
         <ReviewsInput setDataInput={setDataInput} />
       </div>

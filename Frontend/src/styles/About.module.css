@@ -12,6 +12,21 @@
   flex: 2;
   margin-bottom: 4rem;
 }
+.leftVisible {
+  flex: 2;
+  margin-bottom: 4rem;
+  animation-name: my-animation;
+  animation-duration: var(--time-animation);
+  animation-iteration-count: 1;
+}
+@keyframes my-animation {
+  0% {
+    transform: translateX(var(--transform-translateXL));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .bigImage {
   position: relative;
   width: 400px;
@@ -45,6 +60,19 @@
   gap: 1rem;
   min-width: 300px;
   padding-left: 1rem;
+}
+.rightVisible {
+  animation-name: my-animation-right;
+  animation-duration: var(--time-animation);
+  animation-iteration-count: 1;
+}
+@keyframes my-animation-right {
+  0% {
+    transform: translateX(var(--transform-translateXR));
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 .right > h4 {
   font-size: 2rem;

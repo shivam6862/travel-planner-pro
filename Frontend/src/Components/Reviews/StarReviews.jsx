@@ -5,28 +5,32 @@ import classes from "../../styles/Reviews.module.css";
 
 const StarReviews = ({ index, setCountStar }) => {
   const maxStars = 5;
-  const coloredStars = Math.min(index, maxStars);
-  const whiteStars = Math.max(maxStars - index, 0);
-  const coloredStarArray = Array(coloredStars).fill(
-    <div
-      style={{ display: "inline" }}
-      onClick={() => {
-        setCountStar(index - 1);
-      }}
-    >
-      <SvgStarColor />
-    </div>
-  );
-  const whiteStarArray = Array(whiteStars).fill(
-    <div
-      style={{ display: "inline" }}
-      onClick={() => {
-        setCountStar(index + 1);
-      }}
-    >
-      <SvgStarWhite />
-    </div>
-  );
+  const coloredStarArray = Array(index)
+    .fill()
+    .map((_, i) => (
+      <div
+        style={{ display: "inline" }}
+        onClick={() => {
+          setCountStar(i);
+        }}
+        key={`colored-${i}`}
+      >
+        <SvgStarColor />
+      </div>
+    ));
+  const whiteStarArray = Array(maxStars - index)
+    .fill()
+    .map((_, i) => (
+      <div
+        style={{ display: "inline" }}
+        onClick={() => {
+          setCountStar(index + i + 1);
+        }}
+        key={`white-${i}`}
+      >
+        <SvgStarWhite />
+      </div>
+    ));
   return (
     <div className={classes.containerStars}>
       {coloredStarArray}

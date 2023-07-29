@@ -16,6 +16,9 @@
   --transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
   --hover-transition: transform 1.25s cubic-bezier(0.23, 1, 0.23, 1),
     -webkit-transform 1.25s cubic-bezier(0.23, 1, 0.23, 1);
+  --time-animation: 1s;
+  --transform-translateXR: 25%;
+  --transform-translateXL: -25%;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;

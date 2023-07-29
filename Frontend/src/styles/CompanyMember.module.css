@@ -18,6 +18,26 @@
   gap: 3rem;
   width: -webkit-fill-available;
 }
+.boxVisible {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3rem;
+  width: -webkit-fill-available;
+  animation-name: my-animation;
+  animation-duration: var(--time-animation);
+  animation-iteration-count: 1;
+}
+@keyframes my-animation {
+  0% {
+    transform: translateX(var(--transform-translateXR));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .containerItem {
   min-width: 280px;
   display: flex;

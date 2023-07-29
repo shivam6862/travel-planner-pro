@@ -16,6 +16,25 @@
   flex-wrap: wrap;
   gap: 2rem;
 }
+.boxVisible {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  animation-name: my-animation;
+  animation-duration: var(--time-animation);
+  animation-iteration-count: 1;
+}
+@keyframes my-animation {
+  0% {
+    transform: translateX(var(--transform-translateXR));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .container_item {
   display: flex;
   justify-content: center;
