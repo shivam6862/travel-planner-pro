@@ -72,155 +72,193 @@ const SelectPlace = ({ setSearchTerm }) => {
     }
   };
   return (
-    <div className={classes.container}>
-      <div
-        className={classes.input}
-        style={{
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        width: "90%",
+        boxShadow:
+          " rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+        justifyContent: "center",
+        padding: "2rem",
+        borderRadius: "4rem",
+        borderRight: "10px solid wheat",
+        borderLeft: "10px solid wheat",
+        // background:'#c8cccf',
+      }}
+    >
+      <Box
+        sx={{
           display: "flex",
-          alignItems: "center",
+          flexDirection: { xs: "column", md: "row" },
+          width: "100%",
+          justifyContent: "space-evenly",
+          // gap:'3rem',
+          // background:'red'
         }}
       >
-        <TextField
-          label="From ?"
-          value={values.from}
-          onChange={handleChange("from")}
-          type={"text"}
-          onFocus={() => setShowFrom(true)}
+        <Box
+          // className={classes.input}
           sx={{
-            width: "60%",
-            background: "white",
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <RoomIcon
-                  sx={{
-                    color: "green",
-                  }}
-                />
-              </InputAdornment>
-            ),
-          }}
-        />
-        <MButton
-          sx={{
-            background: "wheat",
-            color: "black",
-            fontFamily:
-              "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
-            fontWeight: 900,
-            ml: 1,
-          }}
-          onClick={async () => {
-            const location = await getLocation();
-            console.log(location);
-            if (location) {
-              setSearchTerm((prev) => [...prev, [location.lat, location.lon]]);
-              await reverseGeocoding(location.lat, location.lon);
-            }
+            display: "flex",
+            alignItems: "center",
+            width: { xs: "100%", md: "60%" },
+            // gap:'3rem',
+            // background:'green'
           }}
         >
-          Locate me &nbsp;
-          <GpsFixedIcon
+          <TextField
+            label="From ?"
+            value={values.from}
+            onChange={handleChange("from")}
+            type={"text"}
+            onFocus={() => setShowFrom(true)}
             sx={{
-              color: "#17a2b8",
+              width: "80%",
+              background: "white",
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <RoomIcon
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                </InputAdornment>
+              ),
             }}
           />
-        </MButton>
-        {showFrom && autoCompleteFrom.autoComplete.length > 0 && (
-          <div className={classes.searchLocations}>
-            {autoCompleteFrom.autoComplete.map((place, index) => (
-              <div
-                key={index}
-                className={classes.searchLocationBox}
-                onClick={() => {
-                  setValues((prev) => ({
-                    ...prev,
-                    from: place.display_name,
-                  }));
-                  setSearchTerm((prev) => [...prev, [place.lat, place.lon]]);
-
-                  setShowFrom(false);
-                }}
-              >
-                <Image
-                  className={classes.marker}
-                  src={marker}
-                  width={30}
-                  height={30}
-                />
-                <div className={classes.searchLocation}>
-                  {place.display_name}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-      <div className={classes.input}>
-        <TextField
-          label="Destination?"
-          type={"text"}
-          value={values.to}
-          onChange={handleChange("to")}
-          onFocus={() => setShowTo(true)}
-          sx={{
-            background: "white",
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <PinDropIcon
-                  sx={{
-                    color: "red",
-                  }}
-                />
-              </InputAdornment>
-            ),
-          }}
-        />
-
-        {showTo && autoCompleteTo.autoComplete.length > 0 && (
-          <Box
+          <MButton
             sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              position: "absolute",
-              backgroundColor: "white",
-              zIndex: 1000,
-              padding: "1rem",
-              border: "1px solid black",
+              background: "wheat",
+              color: "black",
+              fontFamily:
+                "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
+              fontWeight: 900,
+              width: "fit-content",
+              ml: 1,
+            }}
+            onClick={async () => {
+              const location = await getLocation();
+              console.log(location);
+              if (location) {
+                setSearchTerm((prev) => [
+                  ...prev,
+                  [location.lat, location.lon],
+                ]);
+                await reverseGeocoding(location.lat, location.lon);
+              }
             }}
           >
-            {autoCompleteTo.autoComplete.map((place, index) => (
-              <div
-                key={index}
-                className={classes.searchLocationBox}
-                onClick={() => {
-                  setValues((prev) => ({
-                    ...prev,
-                    to: place.display_name,
-                  }));
-                  setSearchTerm((prev) => [...prev, [place.lat, place.lon]]);
+            Locate me &nbsp;
+            <GpsFixedIcon
+              sx={{
+                color: "#17a2b8",
+              }}
+            />
+          </MButton>
+          {showFrom && autoCompleteFrom.autoComplete.length > 0 && (
+            <div className={classes.searchLocations}>
+              {autoCompleteFrom.autoComplete.map((place, index) => (
+                <div
+                  key={index}
+                  className={classes.searchLocationBox}
+                  onClick={() => {
+                    setValues((prev) => ({
+                      ...prev,
+                      from: place.display_name,
+                    }));
+                    setSearchTerm((prev) => [...prev, [place.lat, place.lon]]);
 
-                  setShowTo(false);
-                }}
-              >
-                <Image
-                  className={classes.marker}
-                  src={marker}
-                  width={30}
-                  height={30}
-                />
-                <div className={classes.searchLocation}>
-                  {place.display_name}
+                    setShowFrom(false);
+                  }}
+                >
+                  <Image
+                    className={classes.marker}
+                    src={marker}
+                    width={30}
+                    height={30}
+                  />
+                  <div className={classes.searchLocation}>
+                    {place.display_name}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Box>
-        )}
-      </div>
+              ))}
+            </div>
+          )}
+        </Box>
+        <Box
+          sx={{
+            width: { xs: "100%", md: "60%" },
+            mt: { xs: 2, md: 0 },
+          }}
+        >
+          <TextField
+            label="Destination?"
+            type={"text"}
+            value={values.to}
+            onChange={handleChange("to")}
+            onFocus={() => setShowTo(true)}
+            sx={{
+              width: "100%",
+              background: "white",
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <PinDropIcon
+                    sx={{
+                      color: "red",
+                    }}
+                  />
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          {showTo && autoCompleteTo.autoComplete.length > 0 && (
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                position: "absolute",
+                backgroundColor: "white",
+                zIndex: 1000,
+                padding: "1rem",
+                border: "1px solid black",
+              }}
+            >
+              {autoCompleteTo.autoComplete.map((place, index) => (
+                <div
+                  key={index}
+                  className={classes.searchLocationBox}
+                  onClick={() => {
+                    setValues((prev) => ({
+                      ...prev,
+                      to: place.display_name,
+                    }));
+                    setSearchTerm((prev) => [...prev, [place.lat, place.lon]]);
+
+                    setShowTo(false);
+                  }}
+                >
+                  <Image
+                    className={classes.marker}
+                    src={marker}
+                    width={30}
+                    height={30}
+                  />
+                  <div className={classes.searchLocation}>
+                    {place.display_name}
+                  </div>
+                </div>
+              ))}
+            </Box>
+          )}
+        </Box>
+      </Box>
 
       {/* <div className={classes.input}>
         <input
@@ -242,45 +280,63 @@ const SelectPlace = ({ setSearchTerm }) => {
         <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
       </div>
       </div> */}
-      <Box>
-        {/* <TextField label="Date" /> */}
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoContainer components={["DateRangePicker"]}>
-            <DateRangePicker
-              localeText={{ start: "Check-in", end: "Check-out" }}
-              onChange={(e) => {
-                console.log(e);
-                handleChange("dateFrom")({
-                  target: {
-                    value: new Date(e[0]["$d"]).toLocaleDateString("en-US"),
-                  },
-                });
-
-                if (e[1] != null)
-                  handleChange("dateTo")({
+      <Box sx={{
+        display:'flex',
+        flexDirection:{xs:'column',md:'row'},
+        alignItems:'center',
+        // justifyContent:'space-evenly'
+      }}>
+        <Box
+          sx={{
+            display: "flex",
+            // alignItems:'left',
+            justifyContent: "left",
+            width:{xs:'100%',md:'50%'},
+          }}
+        >
+          {/* <TextField label="Date" /> */}
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={["DateRangePicker"]}>
+              <DateRangePicker
+                localeText={{ start: "Check-in", end: "Check-out" }}
+                onChange={(e) => {
+                  console.log(e);
+                  handleChange("dateFrom")({
                     target: {
-                      value: new Date(e[1]["$d"]).toLocaleDateString("en-US"),
+                      value: new Date(e[0]["$d"]).toLocaleDateString("en-US"),
                     },
                   });
-              }}
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                background: "white",
-              }}
-            />
-          </DemoContainer>
-        </LocalizationProvider>
-      </Box>
-      <Box sx={{}}>
-        <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
+
+                  if (e[1] != null)
+                    handleChange("dateTo")({
+                      target: {
+                        value: new Date(e[1]["$d"]).toLocaleDateString("en-US"),
+                      },
+                    });
+                }}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background: "white",
+                  width: "100%",
+                }}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
+        </Box>
+        <Box sx={{
+          mt:{xs:2,md:1},
+          width:{xs:'100%',md:'50%'},
+        }}>
+          <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
+        </Box>  
       </Box>
 
-      <div className={classes.buttons}>
+      {/* <div className={classes.buttons}>
         <Button name={"Add Route"} onClick={addRoute} />
-      </div>
-    </div>
+      </div> */}
+    </Box>
   );
 };
 export default SelectPlace;

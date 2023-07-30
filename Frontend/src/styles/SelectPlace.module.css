@@ -3,7 +3,7 @@
   align-content: center;
   justify-content: space-between;
   align-items: center;
-  flex-direction: row;
+  /* flex-direction: row; */
   flex-wrap: wrap;
   gap: 2rem;
   padding: 2rem;
@@ -12,14 +12,14 @@
   border-right: 4px solid var(--yellow-color);
   width: -webkit-fill-available;
   max-width: 85vw;
-  margin: auto;
+  /* margin: auto; */
   box-shadow: var(--box-shadow);
   position: relative;
   padding-bottom: 6rem;
 }
 .input {
   color: var(--orange);
-  width: 40%;
+  /* width: 40%; */
   min-width: 400px;
 }
 .container .input:nth-child(1),
@@ -36,7 +36,7 @@
   outline: none;
   width: -webkit-fill-available;
   padding: 0.8rem;
-  padding-left: 2rem;
+  /* padding-left: 2rem; */
   background: #ffffff;
 }
 .input > input:focus {

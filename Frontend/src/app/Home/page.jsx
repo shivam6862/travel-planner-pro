@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import AddIcon from "@mui/icons-material/Add";
 const home = () => {
   return (
-    <Box sx={{}}>
+    <Box sx={{ transition:'all ease 0.5s'}}>
       <Box
         sx={{
           display: "flex",

@@ -70,6 +70,7 @@ const Land = () => {
             // width:{xs:'400px',md:'600px'},
             height: matches ? "500px" : "300px",
             width: "100%",
+            transition:'all ease 0.5s'
           }}
         />
       </Box>

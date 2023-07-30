@@ -2,7 +2,12 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
 }
+::-webkit-scrollbar{
+  display: none;
+}
+
 :root {
   --primary-color: #3e1b78;
   --yellow-color: #c29d59;
@@ -30,7 +35,7 @@
   --teal: #20c997;
   --cyan: #17a2b8;
   --white: #fff;
-  --gray: #6c757d;
+  --gray: #c8cccf;
   --gray-dark: #343a40;
   --primary: #007bff;
   --secondary: #6c757d;

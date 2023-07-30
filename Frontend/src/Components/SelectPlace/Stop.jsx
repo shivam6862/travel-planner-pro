@@ -61,8 +61,7 @@ const Stop = ({ arrayStop, setArrayStop }) => {
 
     <Box
       sx={{
-        // background:"red",
-        width: "50%",
+        width: "100%",
       }}
     >
       {arrayStop.map((item, index) => (
