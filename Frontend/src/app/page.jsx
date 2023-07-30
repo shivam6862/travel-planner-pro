@@ -33,7 +33,9 @@ export default function Home() {
       <Auth />
       <About />
       <SelectPlace setSearchTerm={setSearchTerm} />
-      <Map searchTerm={searchTerm} showRoutes={false} />
+      <div style={{ width: "90%" }}>
+        <Map searchTerm={searchTerm} showRoutes={false} />
+      </div>
       <PlaceCard />
       <Vacation />
       <Reviews />

@@ -86,8 +86,10 @@ const StopItem = ({
       <Box
         sx={{
           display: "flex",
+          flexDirection: "column",
           width: "100%",
           mt: 1,
+          position: "relative",
         }}
       >
         <TextField
@@ -102,7 +104,7 @@ const StopItem = ({
             width: "100%",
             borderRadius: "5px",
             color: "green",
-            mr: 3,
+            // mr: 3,
             display: "flex",
             justifyContent: "center",
           }}

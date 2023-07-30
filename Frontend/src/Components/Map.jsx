@@ -49,7 +49,7 @@ const Map = ({ searchTerm, showRoutes }) => {
         zoomControl={false}
         style={{
           height: "100vh",
-          width: "90%",
+          width: "100%",
           padding: 0,
           borderRadius: "30px",
           boxShadow:

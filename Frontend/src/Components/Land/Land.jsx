@@ -11,7 +11,7 @@ const Land = () => {
         flexDirection: { xs: "column", md: "row" },
         justifyContent: "center",
         mt: 2,
-
+        height: "90vh",
         // backgroundRepeat:'no-repeat'
       }}
     >
