@@ -1,16 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Button from "./Button";
-import { Dropdown } from "./Dropdown";
 import classes from "../styles/SelectPlace.module.css";
 import useAutoComplete from "../Hook/useAutoComplete";
 import marker from "../../public/marker-icon.png";
 import Image from "next/image";
 import useLocation from "../Hook/useLocation";
 import useReverseGeocoding from "../Hook/useReverseGeocoding";
+import Stop from "./SelectPlace/Stop";
 
 const SelectPlace = ({ setSearchTerm }) => {
-  const culturalData = ["a", "b", "c", "d"];
   const [values, setValues] = useState({
     from: "",
     to: "",
@@ -51,7 +50,6 @@ const SelectPlace = ({ setSearchTerm }) => {
         >
           Locate me
         </button>
-
         {showFrom && autoCompleteFrom.autoComplete.length > 0 && (
           <div className={classes.searchLocations}>
             {autoCompleteFrom.autoComplete.map((place, index) => (
@@ -81,23 +79,6 @@ const SelectPlace = ({ setSearchTerm }) => {
             ))}
           </div>
         )}
-
-        {/* <div className={classes.searchLocations}>
-          <div
-            className={classes.searchLocationBox}
-            onClick={() => {
-              getLocation();
-            }}
-          >
-            <Image
-              className={classes.marker}
-              src={marker}
-              width={30}
-              height={30}
-            />
-            <div className={classes.searchLocation}>Use Current Location</div>
-          </div>
-        </div> */}
       </div>
       <div className={classes.input}>
         <input
@@ -137,15 +118,19 @@ const SelectPlace = ({ setSearchTerm }) => {
           </div>
         )}
       </div>
-      <div className={classes.fullWidth}>
-        <Dropdown
-          value={values.cultural}
-          onChange={handleChange("cultural")}
-          option={culturalData}
+      <div className={classes.input}>
+        <input
+          placeholder="Date ?"
+          type={"date"}
+          value={values.date}
+          onChange={handleChange("date")}
         />
       </div>
+      <div className={classes.stops}>
+        <Stop />
+      </div>
       <div className={classes.buttons}>
-        <Button name={"Read more"} />
+        <Button name={"Add Route"} />
       </div>
     </div>
   );
