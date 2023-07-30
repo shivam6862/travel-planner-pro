@@ -144,12 +144,15 @@ const Navbar = ({ userdet }) => {
                   }}
                 >
                   {pages.map((page) => (
-                    <MenuItem key={page} onClick={(e)=>{
-                      e.preventDefault();
-                      page == "Login"
-                            ? authenticationContextCtx.onShow("LogInOpen")
-                            : changeRoute.push(`/${page}`);
-                    }}>
+                    <MenuItem
+                      key={page}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        page == "Login"
+                          ? authenticationContextCtx.onShow("LogInOpen")
+                          : changeRoute.push(`/${page}`);
+                      }}
+                    >
                       <Typography textAlign="center" color={"black"}>
                         {page}
                       </Typography>
@@ -157,7 +160,7 @@ const Navbar = ({ userdet }) => {
                   ))}
                 </Menu>
               </Box>
-              
+
               <Typography
                 variant="h5"
                 noWrap
