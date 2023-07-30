@@ -1,80 +1,57 @@
+import { Button } from "@mui/material";
 import React from "react";
-import { Button, Typography, Box } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
-const Land = () => {
-  const matches = useMediaQuery("(min-width:700px)");
 
+const Land = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        justifyContent: "center",
-        mt: 2,
-        height: "90vh",
-        // backgroundRepeat:'no-repeat'
+    <div
+      style={{
+        width: "100%",
+        minHeight: "92vh",
+        background: 'url("/travel.png")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        mixBlendMode: "multiply",
+        position: "relative",
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+      <div
+        style={{
+          position: "absolute",
+          top: "40%",
+          right: "0%",
+          transform: "translate(0%, -50%)",
+          padding: "3rem",
+          paddingRight: "4rem",
         }}
       >
-        <Typography
-          sx={{
-            fontFamily:
-              "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
-            fontSize: { xs: "1.5rem", md: "3rem" },
-            fontWeight: 900,
-          }}
-        >
+        <h1 style={{ fontSize: "3rem", fontWeight: 900 }}>
           Explore A New World.
-        </Typography>
-        <Typography
-          sx={{
-            fontFamily:
-              "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
-            fontSize: { xs: "0.8rem", md: "1rem" },
+        </h1>
+        <p
+          style={{
+            fontSize: "1rem",
+            color: "black",
+            fontWeight: 700,
+            marginTop: "1rem",
             color: "gray",
           }}
         >
           No matter where in the world yoyu wnat to go, we can help you get
           there
-        </Typography>
+        </p>
         <Button
           sx={{
             background: "wheat",
             color: "black",
             fontWeight: 700,
-            fontFamily:
-              "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
             width: "100px",
             mt: 3,
           }}
         >
           Explore Now
         </Button>
-      </Box>
-      <Box
-        sx={{
-          display: { xs: "flex", md: "flex" },
-        }}
-      >
-        <img
-          src="/home.png"
-          style={{
-            // height:{xs:'300px',md:'500px'},
-            // width:{xs:'400px',md:'600px'},
-            height: matches ? "500px" : "300px",
-            width: "100%",
-            transition:'all ease 0.5s'
-          }}
-        />
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 
