@@ -7,29 +7,29 @@ const TopNavigation = ({ values, handleChange }) => {
       <div className={classes.topNavigationInputDiv}>
         <input
           type="text"
-          value={values.startPlace}
-          onChange={handleChange("startPlace")}
+          value={values.from.name}
+          onChange={handleChange("from")}
         />
       </div>
       <div className={classes.topNavigationInputDiv}>
         <input
           type="text"
-          value={values.endPlace}
-          onChange={handleChange("endPlace")}
+          value={values.to.name}
+          onChange={handleChange("to")}
         />
       </div>
       <div className={classes.topNavigationInputDiv}>
         <input
           type="text"
-          value={values.startingDate}
-          onChange={handleChange("startingDate")}
+          value={values.dateFrom}
+          onChange={handleChange("dateFrom")}
         />
       </div>
       <div className={classes.topNavigationInputDiv}>
         <input
           type="text"
-          value={values.endDate}
-          onChange={handleChange("endDate")}
+          value={values.dateTo}
+          onChange={handleChange("dateTo")}
         />
       </div>
       <div className={classes.topNavigationInputDiv}>

@@ -7,8 +7,20 @@ const itinerarySchema = new Schema({
     type: String,
   },
   itinerary: {
-    from: String,
-    to: String,
+    from: {
+      name: String,
+      coords: {
+        lat: Number,
+        lon: Number,
+      },
+    },
+    to: {
+      name: String,
+      coords: {
+        lat: Number,
+        lon: Number,
+      },
+    },
     dateFrom: Date,
     dateTo: Date,
     id: { type: String, default: v4() },

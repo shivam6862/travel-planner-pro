@@ -6,10 +6,11 @@ import { AuthenticationContextProvider } from "../Store/Authentication-context";
 import Navbar from "../components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 import { useLocationLocalStorage } from "../Hook/useLocationLocalStorage";
-import Notifications from "../Components/Notification/Notifications";
+import Notifications from "../components/Notification/Notifications";
 import { NotificationContextProvider } from "../Store/Notification-context";
-import Footer from "../Components/Footer";
+import Footer from "../components/Footer";
 import Script from "next/script";
+import NewNavbar from "../components/NewNavbar";
 
 // export const metadata = {
 //   title: "Travel Planner",
@@ -26,7 +27,8 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <NotificationContextProvider>
           <AuthenticationContextProvider>
-            <Navbar userdet={userdet} />
+            {/* <Navbar userdet={userdet} /> */}
+            <NewNavbar userdet={userdet} />
             <Notifications />
             {children}
             <Footer />

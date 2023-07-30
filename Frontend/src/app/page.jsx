@@ -29,11 +29,11 @@ export default function Home() {
   // console.log(data.data[1].geoCode);
   return (
     <div className={classes.container}>
-      <Land/>
+      <Land />
       <Auth />
       <About />
       <SelectPlace setSearchTerm={setSearchTerm} />
-      <Map searchTerm={searchTerm} />
+      <Map searchTerm={searchTerm} showRoutes={false} />
       <PlaceCard />
       <Vacation />
       <Reviews />

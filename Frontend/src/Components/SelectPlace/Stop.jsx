@@ -69,7 +69,7 @@ const Stop = ({ arrayStop, setArrayStop }) => {
           key={index}
           id={item.id}
           newStop={item.new}
-          place={item.value}
+          place={item.value.name}
           deleteStop={deleteStop}
           addStop={addStop}
           setplace={setplace}

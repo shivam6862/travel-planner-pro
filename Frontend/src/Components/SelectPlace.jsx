@@ -24,14 +24,14 @@ import Button from "./Button";
 
 const SelectPlace = ({ setSearchTerm }) => {
   const [values, setValues] = useState({
-    from: "",
-    to: "",
+    from: { name: "", coords: { lat: 0, lon: 0 } },
+    to: { name: "", coords: { lat: 0, lon: 0 } },
     dateFrom: "",
     dateTo: "",
   });
   console.log(values.dateFrom, values.dateTo);
   const [arrayStop, setArrayStop] = useState([
-    { id: v4(), value: "", new: true },
+    { id: v4(), value: { name: "", coords: { lat: 0, lon: 0 } }, new: true },
   ]);
   const [showTo, setShowTo] = useState(false);
   const [showFrom, setShowFrom] = useState(false);
@@ -51,7 +51,9 @@ const SelectPlace = ({ setSearchTerm }) => {
       return;
     try {
       const { id } = fetchPersonalDetails();
-      const stops = arrayStop.map((stop) => stop.value);
+      const stops = arrayStop.map((stop) =>
+        stop.value.name.length > 0 ? stop.value : null
+      );
       const itinerary = { ...values, stops: stops };
       const response = await fetch(
         `http://localhost:8080/user/add-itinerary/${id}`,
@@ -109,7 +111,7 @@ const SelectPlace = ({ setSearchTerm }) => {
         >
           <TextField
             label="From ?"
-            value={values.from}
+            value={values.from.name}
             onChange={handleChange("from")}
             type={"text"}
             onFocus={() => setShowFrom(true)}
@@ -167,7 +169,10 @@ const SelectPlace = ({ setSearchTerm }) => {
                   onClick={() => {
                     setValues((prev) => ({
                       ...prev,
-                      from: place.display_name,
+                      from: {
+                        name: place.display_name,
+                        coords: { lat: place.lat, lon: place.lon },
+                      },
                     }));
                     setSearchTerm((prev) => [...prev, [place.lat, place.lon]]);
 
@@ -197,7 +202,7 @@ const SelectPlace = ({ setSearchTerm }) => {
           <TextField
             label="Destination?"
             type={"text"}
-            value={values.to}
+            value={values.to.name}
             onChange={handleChange("to")}
             onFocus={() => setShowTo(true)}
             sx={{
@@ -237,7 +242,10 @@ const SelectPlace = ({ setSearchTerm }) => {
                   onClick={() => {
                     setValues((prev) => ({
                       ...prev,
-                      to: place.display_name,
+                      to: {
+                        name: place.display_name,
+                        coords: { lat: place.lat, lon: place.lon },
+                      },
                     }));
                     setSearchTerm((prev) => [...prev, [place.lat, place.lon]]);
 
@@ -280,18 +288,20 @@ const SelectPlace = ({ setSearchTerm }) => {
         <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
       </div>
       </div> */}
-      <Box sx={{
-        display:'flex',
-        flexDirection:{xs:'column',md:'row'},
-        alignItems:'center',
-        // justifyContent:'space-evenly'
-      }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: "center",
+          // justifyContent:'space-evenly'
+        }}
+      >
         <Box
           sx={{
             display: "flex",
             // alignItems:'left',
             justifyContent: "left",
-            width:{xs:'100%',md:'50%'},
+            width: { xs: "100%", md: "50%" },
           }}
         >
           {/* <TextField label="Date" /> */}
@@ -325,17 +335,19 @@ const SelectPlace = ({ setSearchTerm }) => {
             </DemoContainer>
           </LocalizationProvider>
         </Box>
-        <Box sx={{
-          mt:{xs:2,md:1},
-          width:{xs:'100%',md:'50%'},
-        }}>
+        <Box
+          sx={{
+            mt: { xs: 2, md: 1 },
+            width: { xs: "100%", md: "50%" },
+          }}
+        >
           <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
-        </Box>  
+        </Box>
       </Box>
 
-      {/* <div className={classes.buttons}>
+      <div className={classes.buttons}>
         <Button name={"Add Route"} onClick={addRoute} />
-      </div> */}
+      </div>
     </Box>
   );
 };

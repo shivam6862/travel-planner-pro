@@ -19,7 +19,13 @@ const useReverseGeocoding = (setValues) => {
       console.log(data);
       setValues((prev) => ({
         ...prev,
-        from: data.features[0].place_name_en,
+        from: {
+          name: data.features[0].place_name_en,
+          coords: {
+            lat: data.features[0].geometry.coordinates[0],
+            lon: data.features[0].geometry.coordinates[1],
+          },
+        },
       }));
       setLoading(false);
     } catch (error) {

@@ -87,7 +87,7 @@ const StopItem = ({
         sx={{
           display: "flex",
           width: "100%",
-          mt:1,
+          mt: 1,
         }}
       >
         <TextField
@@ -125,7 +125,13 @@ const StopItem = ({
                 key={index}
                 className={styles.searchLocationBox}
                 onClick={() => {
-                  setplace(place.display_name, id);
+                  setplace(
+                    {
+                      name: place.display_name,
+                      coords: { lat: place.lat, lon: place.lon },
+                    },
+                    id
+                  );
 
                   setShowTo(false);
                 }}

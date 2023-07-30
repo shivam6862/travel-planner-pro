@@ -53,7 +53,6 @@
   box-shadow: var(--box-shadow);
 }
 .buttons {
-  position: absolute;
   bottom: 1rem;
   right: 1rem;
   min-width: 150px;
@@ -155,7 +154,6 @@
 
 .btn {
   all: unset;
-  position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
