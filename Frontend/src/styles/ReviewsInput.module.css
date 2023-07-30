@@ -40,6 +40,8 @@
   width: -webkit-fill-available;
   padding: 0.8rem;
   background: #ffffff;
+  max-width: 360px;
+  min-width: 360px;
 }
 .reviewinput > textarea:focus {
   border: 1.2px solid var(--yellow-color);

@@ -84,6 +84,8 @@ const SelectPlace = ({ setSearchTerm }) => {
         borderRadius: "4rem",
         borderRight: "10px solid wheat",
         borderLeft: "10px solid wheat",
+        position: "relative",
+        paddingBottom: "6rem",
         // background:'#c8cccf',
       }}
     >
@@ -94,7 +96,7 @@ const SelectPlace = ({ setSearchTerm }) => {
           width: "100%",
           justifyContent: "space-evenly",
           gap: "1rem",
-          // background:'red'
+          // background: "red",
         }}
       >
         <Box
@@ -105,7 +107,7 @@ const SelectPlace = ({ setSearchTerm }) => {
             alignItems: "center",
             width: { xs: "100%", md: "50%" },
             // gap:'3rem',
-            // background:'green'
+            // background: "green",
           }}
         >
           <TextField
@@ -116,7 +118,7 @@ const SelectPlace = ({ setSearchTerm }) => {
             onFocus={() => setShowFrom(true)}
             sx={{
               width: "100%",
-              // mr:{md:1},
+              // mr: { md: 1 },
               background: "white",
             }}
             InputProps={{
@@ -197,7 +199,8 @@ const SelectPlace = ({ setSearchTerm }) => {
           {showFrom && autoCompleteFrom.autoComplete.length > 0 && (
             <Box
               sx={{
-                width: "38%",
+                // width: "42.8%",
+                width: { xs: "92%", md: "42.8%" },
                 display: "flex",
                 flexDirection: "column",
                 position: "absolute",
@@ -249,7 +252,7 @@ const SelectPlace = ({ setSearchTerm }) => {
             onChange={handleChange("to")}
             onFocus={() => setShowTo(true)}
             sx={{
-              width: "100%",
+              width: "95%",
               background: "white",
             }}
             InputProps={{
@@ -268,7 +271,8 @@ const SelectPlace = ({ setSearchTerm }) => {
           {showTo && autoCompleteTo.autoComplete.length > 0 && (
             <Box
               sx={{
-                width: "46%",
+                // width: "48.8%",
+                width: { xs: "87%", md: "48.8%" },
                 display: "flex",
                 flexDirection: "column",
                 position: "absolute",
@@ -385,9 +389,9 @@ const SelectPlace = ({ setSearchTerm }) => {
         </Box>
       </Box>
 
-      {/* <div className={classes.buttons}>
+      <div className={classes.buttons}>
         <Button name={"Add Route"} onClick={addRoute} />
-      </div> */}
+      </div>
     </Box>
   );
 };
