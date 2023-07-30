@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import StopItem from "./StopItem";
 import classes from "../../styles/Stop.module.css";
 import { v4 } from "uuid";
+import { Box } from "@mui/material";
 
 const Stop = () => {
   const [arrayStop, setArrayStop] = useState([
@@ -41,19 +42,24 @@ const Stop = () => {
   };
 
   return (
-    <div className={classes.container}>
-      {arrayStop.map((item, index) => (
-        <StopItem
-          key={index}
-          id={item.id}
-          newStop={item.new}
-          place={item.value}
-          deleteStop={deleteStop}
-          addStop={addStop}
-          setplace={setplace}
-        />
-      ))}
-    </div>
+  
+      <Box  sx={{
+        // background:"red",
+        width:'50%',
+      }}>
+        {arrayStop.map((item, index) => (
+          <StopItem
+            key={index}
+            id={item.id}
+            newStop={item.new}
+            place={item.value}
+            deleteStop={deleteStop}
+            addStop={addStop}
+            setplace={setplace}
+          />
+        ))}
+      </Box>
+  
   );
 };
 
