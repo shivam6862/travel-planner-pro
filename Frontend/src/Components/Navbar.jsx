@@ -185,7 +185,7 @@ const Navbar = ({ userdet }) => {
                         key={page}
                         onClick={(e) => {
                           e.preventDefault();
-                          changeRoute.push(`/${page}`);
+                          changeRoute.push(`../${page}`);
                         }}
                         sx={{
                           my: 2,
