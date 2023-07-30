@@ -12,7 +12,7 @@ import { v4 } from "uuid";
 import { useLocationLocalStorage } from "../Hook/useLocationLocalStorage";
 import { useRouter } from "next/navigation";
 import InputAdornment from "@mui/material/InputAdornment";
-import { Box, TextField, Button, IconButton } from "@mui/material";
+import { Box, TextField, Button as MButton, IconButton } from "@mui/material";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
@@ -20,6 +20,7 @@ import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 import RoomIcon from "@mui/icons-material/Room";
 import PinDropIcon from "@mui/icons-material/PinDrop";
+import Button from "./Button";
 
 const SelectPlace = ({ setSearchTerm }) => {
   const [values, setValues] = useState({
@@ -28,7 +29,7 @@ const SelectPlace = ({ setSearchTerm }) => {
     dateFrom: "",
     dateTo: "",
   });
-  console.log(values.dateFrom);
+  console.log(values.dateFrom, values.dateTo);
   const [arrayStop, setArrayStop] = useState([
     { id: v4(), value: "", new: true },
   ]);
@@ -101,7 +102,7 @@ const SelectPlace = ({ setSearchTerm }) => {
             ),
           }}
         />
-        <Button
+        <MButton
           sx={{
             background: "wheat",
             color: "black",
@@ -125,7 +126,7 @@ const SelectPlace = ({ setSearchTerm }) => {
               color: "#17a2b8",
             }}
           />
-        </Button>
+        </MButton>
         {showFrom && autoCompleteFrom.autoComplete.length > 0 && (
           <div className={classes.searchLocations}>
             {autoCompleteFrom.autoComplete.map((place, index) => (
@@ -247,7 +248,21 @@ const SelectPlace = ({ setSearchTerm }) => {
           <DemoContainer components={["DateRangePicker"]}>
             <DateRangePicker
               localeText={{ start: "Check-in", end: "Check-out" }}
-              onChange={handleChange("date")}
+              onChange={(e) => {
+                console.log(e);
+                handleChange("dateFrom")({
+                  target: {
+                    value: new Date(e[0]["$d"]).toLocaleDateString("en-US"),
+                  },
+                });
+
+                if (e[1] != null)
+                  handleChange("dateTo")({
+                    target: {
+                      value: new Date(e[1]["$d"]).toLocaleDateString("en-US"),
+                    },
+                  });
+              }}
               sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -259,7 +274,7 @@ const SelectPlace = ({ setSearchTerm }) => {
         </LocalizationProvider>
       </Box>
       <Box sx={{}}>
-        <Stop />
+        <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
       </Box>
 
       <div className={classes.buttons}>

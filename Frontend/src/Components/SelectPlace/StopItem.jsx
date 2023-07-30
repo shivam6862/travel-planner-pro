@@ -2,10 +2,10 @@
 import React from "react";
 import AllStopButton from "./AllStopButton";
 import classes from "../../styles/Stop.module.css";
-// import styles from "../../styles/SelectPlace.module.css";
-// import { useState } from "react";
-// import Image from "next/image";
-// import marker from "../../../public/marker-icon.png";
+import styles from "../../styles/SelectPlace.module.css";
+import { useState } from "react";
+import Image from "next/image";
+import marker from "../../../public/marker-icon.png";
 
 // const StopItem = ({
 //   id,
@@ -67,7 +67,16 @@ import classes from "../../styles/Stop.module.css";
 //     </div>
 import { TextField, Box, InputAdornment } from "@mui/material";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
-const StopItem = ({ id, deleteStop, addStop, newStop, place, setplace }) => {
+const StopItem = ({
+  id,
+  deleteStop,
+  addStop,
+  newStop,
+  place,
+  setplace,
+  autoComplete,
+}) => {
+  const [showTo, setShowTo] = useState(false);
   return (
     <Box
       sx={{
@@ -83,6 +92,7 @@ const StopItem = ({ id, deleteStop, addStop, newStop, place, setplace }) => {
           display: "flex",
           justifyContent: "left",
           alignItems: "left",
+          position: "relative",
         }}
       >
         <TextField
@@ -91,6 +101,7 @@ const StopItem = ({ id, deleteStop, addStop, newStop, place, setplace }) => {
           onChange={(e) => {
             setplace(e.target.value, id);
           }}
+          onFocus={() => setShowTo(true)}
           sx={{
             background: "white",
             width: "37rem",
@@ -113,6 +124,31 @@ const StopItem = ({ id, deleteStop, addStop, newStop, place, setplace }) => {
             ),
           }}
         />
+        {showTo && autoComplete.length > 0 && (
+          <div className={styles.searchLocations}>
+            {autoComplete.map((place, index) => (
+              <div
+                key={index}
+                className={styles.searchLocationBox}
+                onClick={() => {
+                  setplace(place.display_name, id);
+
+                  setShowTo(false);
+                }}
+              >
+                <Image
+                  className={styles.marker}
+                  src={marker}
+                  width={30}
+                  height={30}
+                />
+                <div className={styles.searchLocation}>
+                  {place.display_name}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
         <AllStopButton
           id={id}
           deleteStop={deleteStop}

@@ -74,6 +74,7 @@ const Stop = ({ arrayStop, setArrayStop }) => {
           deleteStop={deleteStop}
           addStop={addStop}
           setplace={setplace}
+          autoComplete={autoComplete}
         />
       ))}
     </Box>
