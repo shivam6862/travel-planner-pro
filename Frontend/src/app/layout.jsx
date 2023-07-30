@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import { AuthenticationContextProvider } from "../Store/Authentication-context";
 import Navbar from "../components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
-import { useLocationLocalStorage } from "../Hook/useLocationLocalStorage";
 import Notifications from "../Components/Notification/Notifications";
 import { NotificationContextProvider } from "../Store/Notification-context";
 import Footer from "../Components/Footer";
@@ -17,8 +16,6 @@ import Script from "next/script";
 // };
 
 export default function RootLayout({ children }) {
-  const { fetchPersonalDetails } = useLocationLocalStorage();
-  const userdet = fetchPersonalDetails();
   return (
     <html lang="en">
       <link rel="icon" href="/logo1.jpeg" />
@@ -26,7 +23,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <NotificationContextProvider>
           <AuthenticationContextProvider>
-            <Navbar userdet={userdet} />
+            <Navbar />
             <Notifications />
             {children}
             <Footer />

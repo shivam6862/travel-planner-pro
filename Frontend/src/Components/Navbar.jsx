@@ -1,6 +1,8 @@
 "use client";
-import { React, useContext, useState } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import AuthenticationContext from "../Store/Authentication-context";
+
+import { useLocationLocalStorage } from "../Hook/useLocationLocalStorage";
 
 import { useRouter } from "next/navigation";
 import AppBar from "@mui/material/AppBar";
@@ -46,9 +48,15 @@ const pageess = [
 ];
 const settings = ["Your Profile", "Manage Travels", "Settings", "Logout"];
 
-const Navbar = ({ userdet }) => {
+const Navbar = () => {
   const authenticationContextCtx = useContext(AuthenticationContext);
-
+  const { removePersonalDetails, fetchPersonalDetails } =
+    useLocationLocalStorage();
+  const [islogIn, setLogIn] = useState(null);
+  useEffect(() => {
+    const id = fetchPersonalDetails();
+    setLogIn(id);
+  }, [authenticationContextCtx.details.email]);
   const changeRoute = useRouter();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -64,7 +72,11 @@ const Navbar = ({ userdet }) => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (e) => {
+    if (e.target.innerText == "Logout") {
+      setLogIn(null);
+      removePersonalDetails();
+    }
     setAnchorElUser(null);
   };
 
@@ -181,7 +193,7 @@ const Navbar = ({ userdet }) => {
               </Typography>
               {/* ----------------desktop version---------------------------- */}
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                {userdet
+                {islogIn
                   ? loginnav.map((page) => (
                       <Button
                         key={page}
@@ -232,14 +244,11 @@ const Navbar = ({ userdet }) => {
               >
                 {/* <SearchInput/> */}
               </Box>
-              {userdet ? (
+              {islogIn ? (
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="/static/images/avatar/2.jpg"
-                      />
+                      <Avatar alt={islogIn.email.toUpperCase()} src="/2.jpg" />
                     </IconButton>
                   </Tooltip>
                   <Menu

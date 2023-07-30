@@ -3,9 +3,12 @@ import classes from "../../styles/Stop.module.css";
 
 const AllStopButton = ({ id, deleteStop, addStop, newStop }) => {
   return (
-    <div className={classes.options} style={{
-      marginLeft:'4px',
-    }}>
+    <div
+      className={classes.options}
+      style={{
+        marginLeft: "4px",
+      }}
+    >
       {newStop ? (
         <div
           className={classes.add}
