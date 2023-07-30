@@ -8,25 +8,58 @@ import Image from "next/image";
 import useLocation from "../Hook/useLocation";
 import useReverseGeocoding from "../Hook/useReverseGeocoding";
 import Stop from "./SelectPlace/Stop";
+import { v4 } from "uuid";
+import { useLocationLocalStorage } from "../Hook/useLocationLocalStorage";
+import { useRouter } from "next/navigation";
 
 const SelectPlace = ({ setSearchTerm }) => {
   const [values, setValues] = useState({
     from: "",
     to: "",
-    date: "",
-    cultural: "",
+    dateFrom: "",
+    dateTo: "",
   });
+  console.log(values.dateFrom);
+  const [arrayStop, setArrayStop] = useState([
+    { id: v4(), value: "", new: true },
+  ]);
   const [showTo, setShowTo] = useState(false);
   const [showFrom, setShowFrom] = useState(false);
+  const { fetchPersonalDetails } = useLocationLocalStorage();
+  const router = useRouter();
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
   const { getLocation } = useLocation(setSearchTerm);
   const { error, isLoading, reverseGeocoding } = useReverseGeocoding(setValues);
 
-  console.log(values.place);
   const autoCompleteTo = useAutoComplete(values.to);
   const autoCompleteFrom = useAutoComplete(values.from);
+  const addRoute = async () => {
+    if (!values.from || !values.to || !values.dateFrom || !values.dateTo)
+      return;
+    try {
+      const { id } = fetchPersonalDetails();
+      const stops = arrayStop.map((stop) => stop.value);
+      const itinerary = { ...values, stops: stops };
+      const response = await fetch(
+        `http://localhost:8080/user/add-itinerary/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(itinerary),
+        }
+      );
+      const result = await response.json();
+
+      if (response.ok) router.push(`/itinerary/${result.response}`);
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className={classes.container}>
       <div className={classes.input}>
@@ -123,14 +156,22 @@ const SelectPlace = ({ setSearchTerm }) => {
           placeholder="Date ?"
           type={"date"}
           value={values.date}
-          onChange={handleChange("date")}
+          onChange={handleChange("dateFrom")}
+        />
+      </div>
+      <div className={classes.input}>
+        <input
+          placeholder="Date ?"
+          type={"date"}
+          value={values.date}
+          onChange={handleChange("dateTo")}
         />
       </div>
       <div className={classes.stops}>
-        <Stop />
+        <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
       </div>
       <div className={classes.buttons}>
-        <Button name={"Add Route"} />
+        <Button name={"Add Route"} onClick={addRoute} />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ const getUserRoutes = require("./getUserRoutes");
 const insertReviewsRoutes = require("./Reviews/insertReviewsRoutes");
 const getReviewsRoutes = require("../routes/Reviews/getReviewsRoutes");
 const getUserReviewsRoutes = require("../routes/Reviews/getUserReviewsRoutes");
+const addItineraryRoute = require("../routes/Itenerary/addIteneraryRoute");
 
 const routes = [
   helloWorldRoute,
@@ -20,6 +21,7 @@ const routes = [
   insertReviewsRoutes,
   getReviewsRoutes,
   getUserReviewsRoutes,
+  addItineraryRoute,
 ];
 
 module.exports = routes;

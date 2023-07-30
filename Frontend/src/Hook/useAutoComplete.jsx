@@ -14,7 +14,6 @@ const useAutoComplete = (query) => {
   const queryString = new URLSearchParams(params);
   const getData = async () => {
     try {
-      const key = process.env.NEXT_PUBLIC_MAPTILER_API_KEY;
       const url = `${BASE_URL}${queryString}`;
       const response = await fetch(url);
 

@@ -25,7 +25,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 // import SearchInput from "./SearchInput";
 // const navselectors = ['Home', 'Iterniaries', 'Deals ']
 const pages = ["Home", "Login"];
-const loginnav = ["Home", "Dashbord", "Itinerary"];
+const loginnav = ["Home", "Dashboard", "Itinerary"];
 const pageess = [
   {
     name: "Your Profile",

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import StopItem from "./StopItem";
 import classes from "../../styles/Stop.module.css";
 import { v4 } from "uuid";
+import useAutoComplete from "../../Hook/useAutoComplete";
 
-const Stop = () => {
-  const [arrayStop, setArrayStop] = useState([
-    { id: v4(), value: "", new: true },
-  ]);
-
+const Stop = ({ arrayStop, setArrayStop }) => {
+  console.log(arrayStop);
   const deleteStop = (id) => {
     const updatedStops = arrayStop.filter((item) => item.id !== id);
     setArrayStop(updatedStops);
@@ -40,6 +38,10 @@ const Stop = () => {
     }
   };
 
+  const { autoComplete } = useAutoComplete(
+    arrayStop[arrayStop.length - 1].value
+  );
+
   return (
     <div className={classes.container}>
       {arrayStop.map((item, index) => (
@@ -51,6 +53,7 @@ const Stop = () => {
           deleteStop={deleteStop}
           addStop={addStop}
           setplace={setplace}
+          autoComplete={autoComplete}
         />
       ))}
     </div>
