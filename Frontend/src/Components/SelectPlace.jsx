@@ -93,7 +93,7 @@ const SelectPlace = ({ setSearchTerm }) => {
           flexDirection: { xs: "column", md: "row" },
           width: "100%",
           justifyContent: "space-evenly",
-          // gap:'3rem',
+          gap: "1rem",
           // background:'red'
         }}
       >
@@ -101,8 +101,9 @@ const SelectPlace = ({ setSearchTerm }) => {
           // className={classes.input}
           sx={{
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
-            width: { xs: "100%", md: "60%" },
+            width: { xs: "100%", md: "50%" },
             // gap:'3rem',
             // background:'green'
           }}
@@ -114,7 +115,8 @@ const SelectPlace = ({ setSearchTerm }) => {
             type={"text"}
             onFocus={() => setShowFrom(true)}
             sx={{
-              width: "80%",
+              width: "100%",
+              // mr:{md:1},
               background: "white",
             }}
             InputProps={{
@@ -127,39 +129,44 @@ const SelectPlace = ({ setSearchTerm }) => {
                   />
                 </InputAdornment>
               ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <MButton
+                    sx={{
+                      background: "wheat",
+                      color: "black",
+                      fontFamily:
+                        "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
+                      fontWeight: 900,
+                      width: "fit-content",
+                      ml: 1,
+                    }}
+                    onClick={async () => {
+                      const location = await getLocation();
+                      console.log(location);
+                      if (location) {
+                        setSearchTerm((prev) => [
+                          ...prev,
+                          [location.lat, location.lon],
+                        ]);
+                        await reverseGeocoding(location.lat, location.lon);
+                      }
+                    }}
+                  >
+                    Locate me &nbsp;
+                    <GpsFixedIcon
+                      sx={{
+                        color: "#17a2b8",
+                      }}
+                    />
+                  </MButton>
+                </InputAdornment>
+              ),
             }}
           />
-          <MButton
-            sx={{
-              background: "wheat",
-              color: "black",
-              fontFamily:
-                "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
-              fontWeight: 900,
-              width: "fit-content",
-              ml: 1,
-            }}
-            onClick={async () => {
-              const location = await getLocation();
-              console.log(location);
-              if (location) {
-                setSearchTerm((prev) => [
-                  ...prev,
-                  [location.lat, location.lon],
-                ]);
-                await reverseGeocoding(location.lat, location.lon);
-              }
-            }}
-          >
-            Locate me &nbsp;
-            <GpsFixedIcon
-              sx={{
-                color: "#17a2b8",
-              }}
-            />
-          </MButton>
-          {showFrom && autoCompleteFrom.autoComplete.length > 0 && (
-            <div className={classes.searchLocations}>
+
+          {/* {showFrom && autoCompleteFrom.autoComplete.length > 0 && (
+            <div className={classes.searchLocations} >
               {autoCompleteFrom.autoComplete.map((place, index) => (
                 <div
                   key={index}
@@ -186,6 +193,47 @@ const SelectPlace = ({ setSearchTerm }) => {
                 </div>
               ))}
             </div>
+          )} */}
+          {showFrom && autoCompleteFrom.autoComplete.length > 0 && (
+            <Box
+              sx={{
+                width: "38%",
+                display: "flex",
+                flexDirection: "column",
+                position: "absolute",
+                backgroundColor: "white",
+                zIndex: 1000,
+                padding: "1rem",
+                mt: 6.2,
+                border: "1px solid black",
+              }}
+            >
+              {autoCompleteFrom.autoComplete.map((place, index) => (
+                <div
+                  key={index}
+                  className={classes.searchLocationBox}
+                  onClick={() => {
+                    setValues((prev) => ({
+                      ...prev,
+                      to: place.display_name,
+                    }));
+                    setSearchTerm((prev) => [...prev, [place.lat, place.lon]]);
+
+                    setShowTo(false);
+                  }}
+                >
+                  <Image
+                    className={classes.marker}
+                    src={marker}
+                    width={30}
+                    height={30}
+                  />
+                  <div className={classes.searchLocation}>
+                    {place.display_name}
+                  </div>
+                </div>
+              ))}
+            </Box>
           )}
         </Box>
         <Box
@@ -220,7 +268,7 @@ const SelectPlace = ({ setSearchTerm }) => {
           {showTo && autoCompleteTo.autoComplete.length > 0 && (
             <Box
               sx={{
-                width: "100%",
+                width: "46%",
                 display: "flex",
                 flexDirection: "column",
                 position: "absolute",
@@ -280,18 +328,20 @@ const SelectPlace = ({ setSearchTerm }) => {
         <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
       </div>
       </div> */}
-      <Box sx={{
-        display:'flex',
-        flexDirection:{xs:'column',md:'row'},
-        alignItems:'center',
-        // justifyContent:'space-evenly'
-      }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: "center",
+          // justifyContent:'space-evenly'
+        }}
+      >
         <Box
           sx={{
             display: "flex",
             // alignItems:'left',
             justifyContent: "left",
-            width:{xs:'100%',md:'50%'},
+            width: { xs: "100%", md: "46%" },
           }}
         >
           {/* <TextField label="Date" /> */}
@@ -325,12 +375,14 @@ const SelectPlace = ({ setSearchTerm }) => {
             </DemoContainer>
           </LocalizationProvider>
         </Box>
-        <Box sx={{
-          mt:{xs:2,md:1},
-          width:{xs:'100%',md:'50%'},
-        }}>
+        <Box
+          sx={{
+            mt: { xs: 2, md: 1 },
+            width: { xs: "100%", md: "50%" },
+          }}
+        >
           <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
-        </Box>  
+        </Box>
       </Box>
 
       {/* <div className={classes.buttons}>
