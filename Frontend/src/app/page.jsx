@@ -34,7 +34,7 @@ export default function Home() {
       <About />
       <SelectPlace setSearchTerm={setSearchTerm} />
       <div style={{ width: "90%" }}>
-        <Map searchTerm={searchTerm} showRoutes={false} />
+        <Map searchTerm={searchTerm} showRoutes={true} />
       </div>
       <PlaceCard />
       <Vacation />

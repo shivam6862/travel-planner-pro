@@ -223,11 +223,14 @@ const SelectPlace = ({ setSearchTerm }) => {
                   onClick={() => {
                     setValues((prev) => ({
                       ...prev,
-                      to: place.display_name,
+                      from: {
+                        name: place.display_name,
+                        coords: { lat: place.lat, lon: place.lon },
+                      },
                     }));
                     setSearchTerm((prev) => [...prev, [place.lat, place.lon]]);
 
-                    setShowTo(false);
+                    setShowFrom(false);
                   }}
                 >
                   <Image

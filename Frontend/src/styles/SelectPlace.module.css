@@ -53,6 +53,7 @@
   box-shadow: var(--box-shadow);
 }
 .buttons {
+  position: absolute;
   bottom: 1rem;
   right: 3rem;
   min-width: 150px;

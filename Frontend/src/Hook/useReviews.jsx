@@ -1,4 +1,4 @@
-import { useLocationLocalStorage } from "./LocationLocalStorage";
+import { useLocationLocalStorage } from "./useLocationLocalStorage";
 import { useNotification } from "./useNotification";
 
 const useReviews = () => {
@@ -8,6 +8,7 @@ const useReviews = () => {
     try {
       const { id } = fetchPersonalDetails();
       const userid = id;
+      console.log(userid);
       const response = await fetch(
         `http://localhost:8080/user/reviews/${userid}`,
         {

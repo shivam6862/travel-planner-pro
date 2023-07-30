@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const v4 = require("uuid").v4;
+const { v4 } = require("uuid");
 const { Schema } = mongoose;
 
 const itinerarySchema = new Schema({
@@ -23,7 +23,7 @@ const itinerarySchema = new Schema({
     },
     dateFrom: Date,
     dateTo: Date,
-    id: { type: String, default: v4() },
+    id: { type: String, default: v4 },
     stops: Array,
   },
 });

@@ -45,10 +45,7 @@ const Itinerary = () => {
       const data = await getItinerary(id);
       console.log(data);
       setValues({ ...data?.response[0], people: "5 people" });
-      getData(
-        data?.response[0].from.coords.lat,
-        data?.response[0].from.coords.lon
-      );
+      getData(data?.response[0].to.coords.lat, data?.response[0].to.coords.lon);
     };
 
     run();

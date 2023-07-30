@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const v4 = require("uuid").v4;
+const { v4 } = require("uuid");
 
 const { Schema } = mongoose;
 
@@ -24,7 +24,7 @@ const reviewsSchema = new Schema({
     },
     id: {
       type: String,
-      default: v4(),
+      default: v4,
     },
   },
 });
