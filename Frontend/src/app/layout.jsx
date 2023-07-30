@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <link rel="icon" href="/logo1.jpeg" />
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
       <body className={inter.className}>
         <NotificationContextProvider>
           <AuthenticationContextProvider>

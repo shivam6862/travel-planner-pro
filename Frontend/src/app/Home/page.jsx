@@ -8,64 +8,70 @@ import AddIcon from "@mui/icons-material/Add";
 const home = () => {
   return (
     <Box sx={{}}>
-      <Box sx={{
-        display:'flex',
-        justifyContent:'right',
-      
-        
-        background:'url("/travel.png") ',
-        backgroundSize:'cover',
-        backgroundPosition:'center',
-        height:'40rem',
-        mixBlendMode: "multiply",
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "right",
 
-      }}>
-          <Box sx={{
-            display:'flex',
-            flexDirection:'column',
-            justifyContent:'center',
-            mr:4,
-            mt:-2,
-
-          }}>
-            <Typography sx={{
-              fontFamily:'Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
-              fontSize:'3rem',
-              fontWeight:900,
-            }}>
-              Explore A New World.
-
-            </Typography>
-            <Typography sx={{
-               fontFamily:'Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
-               fontSize:'1rem',
-               color:'gray',
-
-            }}>
-              No matter where in the world yoyu wnat to go, we can help you get there
-
-            </Typography>
-            <Button sx={{
-              background:'wheat',
-              color:'black',
-              fontWeight:700,
-              fontFamily:'Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
-              width:'100px',
-              mt:3
-
-            }}> 
-              Explore Now
-            </Button>
-
-          </Box>
-          {/* <Box>
+          background: 'url("/travel.png") ',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "40rem",
+          mixBlendMode: "multiply",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            mr: 4,
+            mt: -2,
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily:
+                "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
+              fontSize: "3rem",
+              fontWeight: 900,
+            }}
+          >
+            Explore A New World.
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily:
+                "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
+              fontSize: "1rem",
+              color: "gray",
+            }}
+          >
+            No matter where in the world yoyu wnat to go, we can help you get
+            there
+          </Typography>
+          <Button
+            sx={{
+              background: "wheat",
+              color: "black",
+              fontWeight: 700,
+              fontFamily:
+                "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
+              width: "100px",
+              mt: 3,
+            }}
+          >
+            Explore Now
+          </Button>
+        </Box>
+        {/* <Box>
             <img src='/travel.png' height={500} width={700}/>
           </Box> */}
       </Box>
       <Box
         sx={{
-          display: {xs:'flex',md:'flex'},
-          flexDirection:{xs:'column',md:'row'},
+          display: { xs: "flex", md: "flex" },
+          flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
           alignItemsL: "center",
           mt: 10,
@@ -73,7 +79,7 @@ const home = () => {
       >
         <Typography
           sx={{
-            ml: {xs:3,md:10},
+            ml: { xs: 3, md: 10 },
             fontSize: "2.25rem",
             fontWeight: "700",
             fontFamily:
@@ -88,9 +94,9 @@ const home = () => {
           startIcon={<AddIcon />}
           sx={{
             background: "orange",
-            width:'fit-content',
-            mr: {xs:0,md:10},
-            ml:{xs:3},
+            width: "fit-content",
+            mr: { xs: 0, md: 10 },
+            ml: { xs: 3 },
             "&:hover": {
               backgroundColor: "purple",
             },
@@ -102,16 +108,17 @@ const home = () => {
           Plan new trip
         </Button>
       </Box>
-      
+
       <Box
         sx={{
           display: "flex",
-          flexDirection:{xs:'column',md:'row'},
+          flexDirection: { xs: "column", md: "row" },
           height: "40%",
           width: "100%",
           background: "wheat",
-          mt:3,
+          mt: 3,
           justifyContent: "center",
+          padding: "1rem ",
         }}
       >
         <Box
@@ -154,10 +161,15 @@ const home = () => {
           sx={{
             height: "100%",
             display: "flex",
-            justifyContent:'center'
+            justifyContent: "center",
           }}
         >
-          <img src="/bedroom.jpg" height={180} width={400} style={{borderRadius:'10px'}} />
+          <img
+            src="/bedroom.jpg"
+            height={180}
+            width={400}
+            style={{ borderRadius: "10px" }}
+          />
         </Box>
       </Box>
     </Box>
