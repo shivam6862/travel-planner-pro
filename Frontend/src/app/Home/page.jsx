@@ -10,13 +10,22 @@ const home = () => {
     <Box sx={{}}>
       <Box sx={{
         display:'flex',
-        justifyContent:'center',
-        mt:2,
+        justifyContent:'right',
+      
+        
+        background:'url("/travel.png") ',
+        backgroundSize:'cover',
+        backgroundPosition:'center',
+        height:'40rem',
+        mixBlendMode: "multiply",
+
       }}>
           <Box sx={{
             display:'flex',
             flexDirection:'column',
-            justifyContent:'center'
+            justifyContent:'center',
+            mr:4,
+            mt:-2,
 
           }}>
             <Typography sx={{
@@ -49,9 +58,9 @@ const home = () => {
             </Button>
 
           </Box>
-          <Box>
-            <img src='/home.png' height={500} width={600}/>
-          </Box>
+          {/* <Box>
+            <img src='/travel.png' height={500} width={700}/>
+          </Box> */}
       </Box>
       <Box
         sx={{
