@@ -3,6 +3,7 @@ import StopItem from "./StopItem";
 import classes from "../../styles/Stop.module.css";
 import { v4 } from "uuid";
 import useAutoComplete from "../../Hook/useAutoComplete";
+import { Box } from "@mui/material";
 
 const Stop = ({ arrayStop, setArrayStop }) => {
   console.log(arrayStop);
@@ -43,7 +44,27 @@ const Stop = ({ arrayStop, setArrayStop }) => {
   );
 
   return (
-    <div className={classes.container}>
+    // <div className={classes.container}>
+    //   {arrayStop.map((item, index) => (
+    //     <StopItem
+    //       key={index}
+    //       id={item.id}
+    //       newStop={item.new}
+    //       place={item.value}
+    //       deleteStop={deleteStop}
+    //       addStop={addStop}
+    //       setplace={setplace}
+    //       autoComplete={autoComplete}
+    //     />
+    //   ))}
+    // </div>
+
+    <Box
+      sx={{
+        // background:"red",
+        width: "50%",
+      }}
+    >
       {arrayStop.map((item, index) => (
         <StopItem
           key={index}
@@ -53,10 +74,9 @@ const Stop = ({ arrayStop, setArrayStop }) => {
           deleteStop={deleteStop}
           addStop={addStop}
           setplace={setplace}
-          autoComplete={autoComplete}
         />
       ))}
-    </div>
+    </Box>
   );
 };
 

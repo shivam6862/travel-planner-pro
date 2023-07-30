@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Button from "./Button";
+
 import classes from "../styles/SelectPlace.module.css";
 import useAutoComplete from "../Hook/useAutoComplete";
 import marker from "../../public/marker-icon.png";
@@ -11,6 +11,15 @@ import Stop from "./SelectPlace/Stop";
 import { v4 } from "uuid";
 import { useLocationLocalStorage } from "../Hook/useLocationLocalStorage";
 import { useRouter } from "next/navigation";
+import InputAdornment from "@mui/material/InputAdornment";
+import { Box, TextField, Button, IconButton } from "@mui/material";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
+import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
+import GpsFixedIcon from "@mui/icons-material/GpsFixed";
+import RoomIcon from "@mui/icons-material/Room";
+import PinDropIcon from "@mui/icons-material/PinDrop";
 
 const SelectPlace = ({ setSearchTerm }) => {
   const [values, setValues] = useState({
@@ -29,6 +38,7 @@ const SelectPlace = ({ setSearchTerm }) => {
   const router = useRouter();
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
+    console.log(values.to);
   };
   const { getLocation } = useLocation(setSearchTerm);
   const { error, isLoading, reverseGeocoding } = useReverseGeocoding(setValues);
@@ -62,16 +72,44 @@ const SelectPlace = ({ setSearchTerm }) => {
   };
   return (
     <div className={classes.container}>
-      <div className={classes.input}>
-        <input
-          placeholder="From ?"
+      <div
+        className={classes.input}
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <TextField
+          label="From ?"
           value={values.from}
           onChange={handleChange("from")}
           type={"text"}
           onFocus={() => setShowFrom(true)}
+          sx={{
+            width: "60%",
+            background: "white",
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <RoomIcon
+                  sx={{
+                    color: "green",
+                  }}
+                />
+              </InputAdornment>
+            ),
+          }}
         />
-        <button
-          className={classes.btn}
+        <Button
+          sx={{
+            background: "wheat",
+            color: "black",
+            fontFamily:
+              "Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
+            fontWeight: 900,
+            ml: 1,
+          }}
           onClick={async () => {
             const location = await getLocation();
             console.log(location);
@@ -81,8 +119,13 @@ const SelectPlace = ({ setSearchTerm }) => {
             }
           }}
         >
-          Locate me
-        </button>
+          Locate me &nbsp;
+          <GpsFixedIcon
+            sx={{
+              color: "#17a2b8",
+            }}
+          />
+        </Button>
         {showFrom && autoCompleteFrom.autoComplete.length > 0 && (
           <div className={classes.searchLocations}>
             {autoCompleteFrom.autoComplete.map((place, index) => (
@@ -114,15 +157,41 @@ const SelectPlace = ({ setSearchTerm }) => {
         )}
       </div>
       <div className={classes.input}>
-        <input
-          placeholder="Where To ?"
+        <TextField
+          label="Destination?"
           type={"text"}
           value={values.to}
           onChange={handleChange("to")}
           onFocus={() => setShowTo(true)}
+          sx={{
+            background: "white",
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <PinDropIcon
+                  sx={{
+                    color: "red",
+                  }}
+                />
+              </InputAdornment>
+            ),
+          }}
         />
+
         {showTo && autoCompleteTo.autoComplete.length > 0 && (
-          <div className={classes.searchLocations}>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              position: "absolute",
+              backgroundColor: "white",
+              zIndex: 1000,
+              padding: "1rem",
+              border: "1px solid black",
+            }}
+          >
             {autoCompleteTo.autoComplete.map((place, index) => (
               <div
                 key={index}
@@ -148,10 +217,11 @@ const SelectPlace = ({ setSearchTerm }) => {
                 </div>
               </div>
             ))}
-          </div>
+          </Box>
         )}
       </div>
-      <div className={classes.input}>
+
+      {/* <div className={classes.input}>
         <input
           placeholder="Date ?"
           type={"date"}
@@ -170,6 +240,28 @@ const SelectPlace = ({ setSearchTerm }) => {
       <div className={classes.stops}>
         <Stop arrayStop={arrayStop} setArrayStop={setArrayStop} />
       </div>
+      </div> */}
+      <Box>
+        {/* <TextField label="Date" /> */}
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={["DateRangePicker"]}>
+            <DateRangePicker
+              localeText={{ start: "Check-in", end: "Check-out" }}
+              onChange={handleChange("date")}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                background: "white",
+              }}
+            />
+          </DemoContainer>
+        </LocalizationProvider>
+      </Box>
+      <Box sx={{}}>
+        <Stop />
+      </Box>
+
       <div className={classes.buttons}>
         <Button name={"Add Route"} onClick={addRoute} />
       </div>
