@@ -64,7 +64,8 @@ const home = () => {
       </Box>
       <Box
         sx={{
-          display: "flex",
+          display: {xs:'flex',md:'flex'},
+          flexDirection:{xs:'column',md:'row'},
           justifyContent: "space-between",
           alignItemsL: "center",
           mt: 10,
@@ -72,7 +73,7 @@ const home = () => {
       >
         <Typography
           sx={{
-            ml: 10,
+            ml: {xs:3,md:10},
             fontSize: "2.25rem",
             fontWeight: "700",
             fontFamily:
@@ -87,7 +88,9 @@ const home = () => {
           startIcon={<AddIcon />}
           sx={{
             background: "orange",
-            mr: 10,
+            width:'fit-content',
+            mr: {xs:0,md:10},
+            ml:{xs:3},
             "&:hover": {
               backgroundColor: "purple",
             },
@@ -103,10 +106,11 @@ const home = () => {
       <Box
         sx={{
           display: "flex",
-          height: "15rem",
+          flexDirection:{xs:'column',md:'row'},
+          height: "40%",
           width: "100%",
           background: "wheat",
-          mt: 3,
+          mt:3,
           justifyContent: "center",
         }}
       >
@@ -150,9 +154,10 @@ const home = () => {
           sx={{
             height: "100%",
             display: "flex",
+            justifyContent:'center'
           }}
         >
-          <img src="/bedroom.jpg" height={180} width={400} style={{}} />
+          <img src="/bedroom.jpg" height={180} width={400} style={{borderRadius:'10px'}} />
         </Box>
       </Box>
     </Box>

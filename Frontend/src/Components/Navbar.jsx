@@ -132,7 +132,7 @@ const Navbar = ({ userdet }) => {
                     vertical: "bottom",
                     horizontal: "left",
                   }}
-                  keepMounted
+                  keepMount1ed
                   transformOrigin={{
                     vertical: "top",
                     horizontal: "left",
@@ -144,7 +144,12 @@ const Navbar = ({ userdet }) => {
                   }}
                 >
                   {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <MenuItem key={page} onClick={(e)=>{
+                      e.preventDefault();
+                      page == "Login"
+                            ? authenticationContextCtx.onShow("LogInOpen")
+                            : changeRoute.push(`/${page}`);
+                    }}>
                       <Typography textAlign="center" color={"black"}>
                         {page}
                       </Typography>
@@ -152,18 +157,12 @@ const Navbar = ({ userdet }) => {
                   ))}
                 </Menu>
               </Box>
-              <AdbIcon
-                sx={{
-                  display: { xs: "flex", md: "none" },
-                  mr: 1,
-                  color: "gray",
-                }}
-              />
+              
               <Typography
                 variant="h5"
                 noWrap
                 component="a"
-                href=""
+                href="/"
                 sx={{
                   mr: 2,
                   display: { xs: "flex", md: "none" },
@@ -175,7 +174,7 @@ const Navbar = ({ userdet }) => {
                   textDecoration: "none",
                 }}
               >
-                LOGO
+                Travel Planner Pro
               </Typography>
               {/* ----------------desktop version---------------------------- */}
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
