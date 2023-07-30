@@ -81,18 +81,13 @@ const StopItem = ({
     <Box
       sx={{
         display: "flex",
-        justifyContent: "left",
-        alignItems: "left",
-        // background:'green',
-        width: "20%",
       }}
     >
       <Box
         sx={{
           display: "flex",
-          justifyContent: "left",
-          alignItems: "left",
-          position: "relative",
+          width: "100%",
+          mt:1,
         }}
       >
         <TextField
@@ -104,8 +99,7 @@ const StopItem = ({
           onFocus={() => setShowTo(true)}
           sx={{
             background: "white",
-            width: "37rem",
-            // border:'1px solid gray',
+            width: "100%",
             borderRadius: "5px",
             color: "green",
             mr: 3,
@@ -149,13 +143,13 @@ const StopItem = ({
             ))}
           </div>
         )}
-        <AllStopButton
-          id={id}
-          deleteStop={deleteStop}
-          addStop={addStop}
-          newStop={newStop}
-        />
       </Box>
+      <AllStopButton
+        id={id}
+        deleteStop={deleteStop}
+        addStop={addStop}
+        newStop={newStop}
+      />
     </Box>
   );
 };
