@@ -9,6 +9,7 @@ import Reviews from "../components/Reviews/Reviews";
 import CompanyMember from "../components/CompanyMember/CompanyMember";
 import About from "../components/About/About";
 import Map from "../components/NewMap";
+import Land from "../Components/Land/Land";
 
 // const getData = async () => {
 //   const response = await fetch(
@@ -28,6 +29,7 @@ export default function Home() {
   // console.log(data.data[1].geoCode);
   return (
     <div className={classes.container}>
+      <Land/>
       <Auth />
       <About />
       <SelectPlace setSearchTerm={setSearchTerm} />
