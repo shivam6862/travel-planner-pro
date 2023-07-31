@@ -10,8 +10,8 @@ const Vacation = () => {
       id: "dbkjfdsfnsdlknvlkdsnl",
     },
     {
-      image: "Greece.jpg",
-      location: "Greece",
+      image: "jaisalmer.jpg",
+      location: "Jaisalmer",
       id: "dbkjfdsfnsdlknvlkdsnl",
     },
   ];

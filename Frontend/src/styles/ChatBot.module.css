@@ -1,0 +1,94 @@
+.container {
+  position: fixed;
+  right: 0rem;
+  bottom: 0rem;
+  z-index: 1400;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  background: var(--white-light-color);
+  padding: 1rem 0rem;
+  width: 30%;
+  min-height: 100vh;
+  animation-name: my-animation;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+@keyframes my-animation {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.cross {
+  cursor: pointer;
+  border-bottom: 1px solid var(--dark-color);
+  padding: 0.8rem 1rem 1.3rem 1rem;
+}
+.container > input {
+  border: 1px solid #ddd;
+  border-radius: 1px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 500;
+  outline: none;
+  width: 95%;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  position: absolute;
+  bottom: 1.2rem;
+  right: 0.5rem;
+}
+.chatBotChat {
+  max-height: 70vh;
+  overflow-y: scroll;
+  padding: 1rem;
+}
+.containerChat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+}
+.left {
+  font-size: 1.2rem;
+  color: var(--yellow-color);
+  align-self: flex-start;
+  text-align: left;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 0 6px -2px rgba(0, 0, 0, 0.05), inset 0 0 0 1px #445669;
+  text-transform: capitalize;
+}
+.right {
+  font-size: 1.2rem;
+  color: var(--yellow-color);
+  align-self: flex-end;
+  text-align: right;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 0 6px -2px rgba(0, 0, 0, 0.05), inset 0 0 0 1px #445669;
+  text-transform: capitalize;
+}
+.sending {
+  position: absolute;
+  bottom: 2.5rem;
+  cursor: pointer;
+  right: 1.5rem;
+}
+@media screen and (max-width: 1040px) {
+  .container {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 640px) {
+  .container {
+    width: 90%;
+  }
+}

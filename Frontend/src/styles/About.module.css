@@ -115,3 +115,25 @@
     justify-content: center;
   }
 }
+
+@media screen and (max-width: 410px) {
+  .bigImage {
+    width: 200px;
+  }
+  .right {
+    min-width: 200px;
+  }
+  .bigImage > img {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media screen and (max-width: 410px) {
+  .smallImage > img {
+    width: 120px;
+    height: 100px;
+  }
+  .right {
+    min-width: 90vw;
+  }
+}

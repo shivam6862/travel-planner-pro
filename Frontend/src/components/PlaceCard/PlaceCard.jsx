@@ -5,8 +5,8 @@ import classes from "../../styles/PlaceCard.module.css";
 const PlaceCard = () => {
   const place = [
     {
-      image: "Greece.jpg",
-      location: "Greece",
+      image: "jaisalmer.jpg",
+      location: "Jaisalmer",
       about: "Holiday Planners is a World Leading Online Tour Booking Platform",
       description:
         "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",

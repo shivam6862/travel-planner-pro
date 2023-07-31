@@ -80,10 +80,11 @@ const Navbar = () => {
       <AppBar
         position="sticky"
         sx={{
+          overflow: "hidden",
           background: "#fff",
         }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="100%">
           <Toolbar disableGutters>
             <Box
               sx={{
@@ -167,8 +168,51 @@ const Navbar = () => {
                   </Menu>
                 </Box>
               )}
+              {islogIn != null && islogIn != undefined && (
+                <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleOpenNavMenu}
+                    color="black"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorElNav}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "left",
+                    }}
+                    keepMount1ed
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "left",
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                      display: { xs: "block", md: "none" },
+                    }}
+                  >
+                    <MenuItem
+                      onClick={(e) => {
+                        e.preventDefault();
+                        changeRoute.push(`/dashboard`);
+                      }}
+                    >
+                      <Typography textAlign="center" color={"black"}>
+                        dashboard
+                      </Typography>
+                    </MenuItem>
+                  </Menu>
+                </Box>
+              )}
               <Typography
-                variant="h5"
+                variant="h6"
                 noWrap
                 component="a"
                 href="/"
@@ -176,11 +220,10 @@ const Navbar = () => {
                   mr: 2,
                   display: { xs: "flex", md: "none" },
                   flexGrow: 1,
-                  fontFamily: "monospace",
                   fontWeight: 700,
-                  letterSpacing: ".3rem",
                   color: "black",
                   textDecoration: "none",
+                  overflow: "hidden",
                 }}
               >
                 Travel Planner Pro
@@ -200,7 +243,6 @@ const Navbar = () => {
                           color: "black",
                           display: "block",
                           fontSize: "1.2rem",
-                          fontFamily: "monospace",
                           fontWeight: 900,
                           paddingLeft: "2rem",
                         }}
@@ -223,7 +265,6 @@ const Navbar = () => {
                           color: "black",
                           display: "block",
                           fontSize: "1.2rem",
-                          fontFamily: "monospace",
                           fontWeight: 900,
                           position: "absolute",
                           right: "0",

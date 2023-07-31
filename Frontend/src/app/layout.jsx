@@ -9,8 +9,18 @@ import { NotificationContextProvider } from "../Store/Notification-context";
 import Footer from "../components/Footer";
 import Script from "next/script";
 import NewNavbar from "../components/NewNavbar";
+import ChatBot from "../components/chatBot/ChatBot";
+import MarkUnreadChatAltIcon from "@mui/icons-material/MarkUnreadChatAlt";
+import { useState } from "react";
 
 export default function RootLayout({ children }) {
+  const [toggleChat, setToggleChat] = useState(false);
+  const [chat, setChat] = useState([
+    {
+      message: "Hello!",
+      isUser: "false",
+    },
+  ]);
   return (
     <html lang="en">
       {/* <link rel="icon" href="/logo1.jpeg" sizes={"any"} /> */}
@@ -21,6 +31,26 @@ export default function RootLayout({ children }) {
             <NewNavbar />
             <Notifications />
             {children}
+            {toggleChat && (
+              <ChatBot
+                setToggleChat={setToggleChat}
+                chat={chat}
+                setChat={setChat}
+              />
+            )}
+            <div
+              style={{
+                position: "fixed",
+                right: "1rem",
+                bottom: "1rem",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setToggleChat(true);
+              }}
+            >
+              <MarkUnreadChatAltIcon style={{ fontSize: 36 }} />
+            </div>
             <Footer />
           </AuthenticationContextProvider>
         </NotificationContextProvider>
