@@ -8,6 +8,7 @@ import useAuth from "../../../Hook/useAuth";
 import SvgOpen from "../../../../Public/SvgOpen";
 import SvgClosed from "../../../../Public/SvgClosed";
 import LoadingSpinner from "../../../components/LoadingSpinner";
+import Image from "next/image";
 
 const resetpassword = () => {
   const router = useParams();
@@ -89,14 +90,14 @@ const resetpassword = () => {
         <meta name="Reset Password" content="Reset Password" />
       </Head>
       {correctUser === "2" ? (
-        <div className={classes.box}>
+        <div className={classes.boxReset}>
           <div className={classes.part1}>
             <div className={classes.part1_left}>
               <h1>Reset Password</h1>
               <div className={classes.underline}> </div>
             </div>
             <div className={classes.part1_right}>
-              <img src="/logo.jpeg" alt="" />
+              <Image src={"/logo1.jpeg"} alt="logo" height="80" width="80" />
             </div>
           </div>
           <div className={classes.form}>

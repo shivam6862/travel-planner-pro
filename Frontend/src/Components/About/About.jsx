@@ -41,15 +41,17 @@ const About = () => {
         <h4>About us</h4>
         <h2>Plan Your Trip with Us</h2>
         <p>
-          Far far away, behind the word mountains, far from the countries
-          Vokalia and Consonantia, there live the blind texts. Separated they
-          live in Bookmarksgrove right at the coast of the Semantics, a large
-          language ocean. A small river named Duden flows by their place and
-          supplies it with the necessary regelialia. It is a paradisematic
-          country, in which roasted parts of sentences fly into your mouth. Even
-          the all-powerful Pointing has no control about the blind texts it is
-          an almost unorthographic. Italic Mountains, she had a last view back
-          on the skyline
+          Far, far away, nestled behind majestic mountains and distant from the
+          lands of Vokalia and Consonantia, dwell the blind texts. They reside
+          in Bookmarksgrove, near the coast of the Semantics, where a serene
+          river named Duden gracefully flows, providing essential regelialia.
+          This paradisematic realm welcomes roasted parts of sentences that
+          gracefully fly into your mouth. Even the all-powerful Pointing, though
+          mighty, lacks dominion over these blind texts. Their unique nature
+          renders them almost unorthographic, akin to the Italic Mountains. As
+          she gazes upon the captivating skyline, she embraces a sense of
+          longing, bidding a farewell to the mesmerizing views of this mystical
+          land.
         </p>
         <div className={classes.buttons}>
           <Button name={"READ MORE"} />

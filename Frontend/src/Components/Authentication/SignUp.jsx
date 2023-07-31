@@ -6,6 +6,7 @@ import AuthenticationContext from "../../Store/Authentication-context";
 import useAuth from "../../Hook/useAuth";
 import SvgOpen from "../../../Public/SvgOpen";
 import SvgClosed from "../../../Public/SvgClosed";
+import Image from "next/image";
 
 const SignUP = () => {
   const { Auth } = useAuth();
@@ -82,7 +83,7 @@ const SignUP = () => {
             <div className={classes.underline}> </div>
           </div>
           <div className={classes.part1_right}>
-            <img src="/logo.jpeg" alt="" />
+            <Image src={"/logo1.jpeg"} alt="logo" height="80" width="80" />
           </div>
         </div>
         <div className={classes.form}>
