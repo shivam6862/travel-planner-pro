@@ -5,7 +5,7 @@ import classes from "../../styles/Stop.module.css";
 import styles from "../../styles/SelectPlace.module.css";
 import { useState } from "react";
 import Image from "next/image";
-import marker from "../../../public/marker-icon.png";
+import marker from "../../../Public/marker-icon.png";
 
 // const StopItem = ({
 //   id,
