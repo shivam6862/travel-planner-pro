@@ -1,9 +1,7 @@
 "use client";
 import { React, useContext, useEffect, useState } from "react";
 import AuthenticationContext from "../Store/Authentication-context";
-
 import { useLocationLocalStorage } from "../Hook/useLocationLocalStorage";
-
 import { useRouter } from "next/navigation";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -18,16 +16,13 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import HomeIcon from "@mui/icons-material/Home";
 import SettingsIcon from "@mui/icons-material/Settings";
-// import SearchInput from '../app/SearchInput'
 import LogoutIcon from "@mui/icons-material/Logout";
-// import SearchInput from "./SearchInput";
 // const navselectors = ['Home', 'Iterniaries', 'Deals ']
-const pages = ["Home", "Login"];
-const loginnav = ["Home", "Dashboard", "Itinerary"];
+const pages = [, "Login"];
+const loginnav = [, "dashboard"];
 const pageess = [
   {
     name: "Your Profile",
@@ -85,7 +80,7 @@ const Navbar = () => {
       <AppBar
         position="sticky"
         sx={{
-          background: "#c29d59",
+          background: "#fff",
         }}
       >
         <Container maxWidth="xl">
@@ -115,9 +110,7 @@ const Navbar = () => {
                 sx={{
                   mr: 2,
                   display: { xs: "none", md: "flex" },
-                  fontFamily: "Monospace",
-                  fontWeight: 900,
-                  // letterSpacing: ".3rem",
+                  fontWeight: 700,
                   color: "black",
                   textDecoration: "none",
                   fontSize: "1.5rem",
@@ -208,6 +201,7 @@ const Navbar = () => {
                           fontSize: "1.2rem",
                           fontFamily: "monospace",
                           fontWeight: 900,
+                          paddingLeft: "2rem",
                         }}
                       >
                         {page}
@@ -230,6 +224,9 @@ const Navbar = () => {
                           fontSize: "1.2rem",
                           fontFamily: "monospace",
                           fontWeight: 900,
+                          position: "absolute",
+                          right: "0",
+                          top: "0",
                         }}
                       >
                         {page}
@@ -241,11 +238,9 @@ const Navbar = () => {
                   display: "flex",
                   ml: 5,
                 }}
-              >
-                {/* <SearchInput/> */}
-              </Box>
+              ></Box>
               {islogIn ? (
-                <Box sx={{ flexGrow: 0 }}>
+                <Box sx={{ flexGrow: 0, position: "absolute", right: "0" }}>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                       <Avatar alt={islogIn.email.toUpperCase()} src="/2.jpg" />
