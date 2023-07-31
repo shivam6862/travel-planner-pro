@@ -28,7 +28,7 @@ const Dashboard = () => {
   const { getUser, fetchPersonalDetails } = useLocationLocalStorage();
   const user = getUser();
   console.log(user);
-  const userid = fetchPersonalDetails().id;
+  const { id: userid } = fetchPersonalDetails();
   useEffect(() => {
     const run = async () => {
       const data = await getProfile();
@@ -42,7 +42,7 @@ const Dashboard = () => {
     const callFunction = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/reviews/${userid}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/${userid}`,
           {
             method: "GET",
             headers: {
@@ -57,7 +57,7 @@ const Dashboard = () => {
         console.log(err.message);
       }
     };
-    callFunction();
+    if (userid) callFunction();
   }, []);
   const setDataInput = (data) => {
     setData((prev) => [...prev, data]);

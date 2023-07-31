@@ -25,7 +25,7 @@ const resetpassword = () => {
     const callFunction = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/user/getnewpassword/${token}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/getnewpassword/${token}`,
           {
             method: "POST",
             headers: {
