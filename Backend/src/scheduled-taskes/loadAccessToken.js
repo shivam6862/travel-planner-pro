@@ -21,7 +21,7 @@ const loadAccessToken = async (symbol) => {
   //   headers,
   //   body: data,
   // });
-  const response = await axios(url, data, { headers });
+  const response = await axios.post(url, data, { headers });
   // const history = await response.json();
   return response.data;
 };
