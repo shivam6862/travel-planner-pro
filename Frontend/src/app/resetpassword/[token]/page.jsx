@@ -7,7 +7,7 @@ import classes from "../../../styles/Auth.module.css";
 import useAuth from "../../../Hook/useAuth";
 import SvgOpen from "../../../../Public/SvgOpen";
 import SvgClosed from "../../../../Public/SvgClosed";
-import LoadingSpinner from "../../../components/LoadingSpinner";
+import LoadingSpinner from "../../../Components/LoadingSpinner";
 import Image from "next/image";
 
 const resetpassword = () => {
@@ -25,7 +25,7 @@ const resetpassword = () => {
     const callFunction = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/user/getnewpassword/${token}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/getnewpassword/${token}`,
           {
             method: "POST",
             headers: {

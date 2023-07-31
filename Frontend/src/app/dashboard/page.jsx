@@ -2,25 +2,10 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../styles/Dashboard.module.css";
 import { useLocationLocalStorage } from "../../Hook/useLocationLocalStorage";
-import Profile from "../../Components/Dashboard/Profile";
+import NewProfile from "../../Components/Dashboard/NewProfile";
 import Itineraries from "../../Components/Dashboard/Itineraries";
 import ReviewsInput from "../../Components/Reviews/ReviewInput";
 import ReviewsItem from "../../Components/Reviews/ReviewItem";
-
-const getProfile = async () => {
-  try {
-    const { fetchPersonalDetails } = useLocationLocalStorage();
-    const { id } = fetchPersonalDetails();
-    if (!id) return;
-    const url = `http://localhost:8080/user/get-profile/${id}`;
-
-    const response = await fetch(url);
-    const result = await response.json();
-    if (response.ok) return result.response;
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 const Dashboard = () => {
   const [itineraries, setItineraries] = useState([]);
@@ -28,13 +13,28 @@ const Dashboard = () => {
   const { getUser, fetchPersonalDetails } = useLocationLocalStorage();
   const user = getUser();
   console.log(user);
-  const userid = fetchPersonalDetails().id;
+  const details = fetchPersonalDetails();
+  const getProfile = async (id) => {
+    try {
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/get-profile/${id}`;
+
+      const response = await fetch(url);
+      const result = await response.json();
+      if (response.ok) return result.response;
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     const run = async () => {
-      const data = await getProfile();
-      if (data) setItineraries(data);
+      try {
+        const data = await getProfile(details?.id);
+        if (data) setItineraries(data);
+      } catch (err) {
+        console.log(err);
+      }
     };
-    run();
+    if (details?.id) run();
   }, []);
 
   const [data, setData] = useState([]);
@@ -42,7 +42,7 @@ const Dashboard = () => {
     const callFunction = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/reviews/${userid}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/${details?.id}`,
           {
             method: "GET",
             headers: {
@@ -57,8 +57,8 @@ const Dashboard = () => {
         console.log(err.message);
       }
     };
-    callFunction();
-  }, []);
+    if (details?.id) callFunction();
+  }, [details?.id]);
   const setDataInput = (data) => {
     setData((prev) => [...prev, data]);
   };
@@ -87,7 +87,7 @@ const Dashboard = () => {
           {toggle ? (
             <Itineraries itineraries={itineraries} />
           ) : (
-            <Profile user={user} />
+            <NewProfile user={user} />
           )}
         </div>
       </div>

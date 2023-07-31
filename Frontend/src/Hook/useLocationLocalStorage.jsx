@@ -9,7 +9,6 @@ export const useLocationLocalStorage = () => {
     if (typeof localStorage !== "undefined") {
       const data = localStorage.getItem("PersonalDetails");
       const response = JSON.parse(data);
-      if (!data) return;
       return response;
     }
   };

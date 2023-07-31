@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import classes from "../styles/SelectPlace.module.css";
 import useAutoComplete from "../Hook/useAutoComplete";
-import marker from "../../public/marker-icon.png";
+import marker from "../../Public/marker-icon.png";
 import Image from "next/image";
 import useLocation from "../Hook/useLocation";
 import useReverseGeocoding from "../Hook/useReverseGeocoding";
@@ -13,10 +13,6 @@ import { useLocationLocalStorage } from "../Hook/useLocationLocalStorage";
 import { useRouter } from "next/navigation";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Box, TextField, Button as MButton, IconButton } from "@mui/material";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
-import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 import RoomIcon from "@mui/icons-material/Room";
 import PinDropIcon from "@mui/icons-material/PinDrop";
@@ -63,7 +59,7 @@ const SelectPlace = ({ setSearchTerm }) => {
       );
       const itinerary = { ...values, stops: stops };
       const response = await fetch(
-        `http://localhost:8080/user/add-itinerary/${id.id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/add-itinerary/${id.id}`,
         {
           method: "POST",
           headers: {
@@ -367,7 +363,7 @@ const SelectPlace = ({ setSearchTerm }) => {
           }}
         >
           {/* <TextField label="Date" /> */}
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DateRangePicker"]}>
               <DateRangePicker
                 localeText={{ start: "Check-in", end: "Check-out" }}
@@ -395,7 +391,7 @@ const SelectPlace = ({ setSearchTerm }) => {
                 }}
               />
             </DemoContainer>
-          </LocalizationProvider>
+          </LocalizationProvider> */}
         </Box>
         <Box
           sx={{

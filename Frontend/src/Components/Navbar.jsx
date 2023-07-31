@@ -149,9 +149,9 @@ const Navbar = () => {
                       display: { xs: "block", md: "none" },
                     }}
                   >
-                    {pages.map((page) => (
+                    {pages.map((page, index) => (
                       <MenuItem
-                        key={page}
+                        key={index}
                         onClick={(e) => {
                           e.preventDefault();
                           page == "Login"
@@ -188,9 +188,9 @@ const Navbar = () => {
               {/* ----------------desktop version---------------------------- */}
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                 {islogIn
-                  ? loginnav.map((page) => (
+                  ? loginnav.map((page, index) => (
                       <Button
-                        key={page}
+                        key={index}
                         onClick={(e) => {
                           e.preventDefault();
                           changeRoute.push(`../${page}`);
@@ -208,9 +208,9 @@ const Navbar = () => {
                         {page}
                       </Button>
                     ))
-                  : pages.map((page) => (
+                  : pages.map((page, index) => (
                       <Button
-                        key={page}
+                        key={index}
                         onClick={(e) => {
                           e.preventDefault();
 
@@ -244,7 +244,9 @@ const Navbar = () => {
                 <Box sx={{ flexGrow: 0, position: "absolute", right: "0" }}>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar alt={islogIn.email.toUpperCase()} src="/2.jpg" />
+                      <Avatar alt={islogIn.email.toUpperCase()}>
+                        {islogIn?.name[0]}
+                      </Avatar>
                     </IconButton>
                   </Tooltip>
                   <Menu
@@ -263,8 +265,8 @@ const Navbar = () => {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
-                    {pageess.map((pageess) => (
-                      <MenuItem key={pageess} onClick={handleCloseUserMenu}>
+                    {pageess.map((pageess, index) => (
+                      <MenuItem key={index} onClick={handleCloseUserMenu}>
                         {pageess.logo}
                         <Typography
                           textAlign="center"

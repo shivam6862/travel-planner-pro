@@ -1,7 +1,7 @@
 import React from "react";
 import StopItem from "./StopItem";
 import classes from "../../styles/Stop.module.css";
-import { v4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import useAutoComplete from "../../Hook/useAutoComplete";
 import { Box } from "@mui/material";
 
@@ -13,7 +13,7 @@ const Stop = ({ arrayStop, setArrayStop }) => {
   };
 
   const addStop = (id) => {
-    const newStopItem = { id: v4(), value: "", new: true };
+    const newStopItem = { id: uuidv4(), value: "", new: true };
     setArrayStop([...arrayStop, newStopItem]);
     setArrayStop((prevArray) =>
       prevArray.map((item) => ({
@@ -60,9 +60,9 @@ const Stop = ({ arrayStop, setArrayStop }) => {
         width: "100%",
       }}
     >
-      {arrayStop.map((item, index) => (
+      {arrayStop.map((item) => (
         <StopItem
-          key={index}
+          key={item.id}
           id={item.id}
           newStop={item.new}
           place={item.value.name}

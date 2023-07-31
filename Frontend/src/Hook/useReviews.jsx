@@ -10,7 +10,7 @@ const useReviews = () => {
       const userid = id;
       console.log(userid);
       const response = await fetch(
-        `http://localhost:8080/user/reviews/${userid}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/reviews/${userid}`,
         {
           method: "POST",
           headers: {

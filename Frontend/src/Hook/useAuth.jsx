@@ -6,14 +6,17 @@ const useAuth = () => {
   const { updatePersonalDetails } = useLocationLocalStorage();
   const Auth = async (data, type) => {
     try {
-      const response = await fetch(`http://localhost:8080/user/${type}`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/${type}`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const responsedata = await response.json();
       NotificationHandler(responsedata.message, responsedata.type);
       if (
