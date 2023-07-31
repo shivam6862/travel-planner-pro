@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../styles/Dashboard.module.css";
 import { useLocationLocalStorage } from "../../Hook/useLocationLocalStorage";
-import Profile from "../../Components/Dashboard/Profile";
+import NewProfile from "../../Components/Dashboard/NewProfile";
 import Itineraries from "../../Components/Dashboard/Itineraries";
 import ReviewsInput from "../../Components/Reviews/ReviewInput";
 import ReviewsItem from "../../Components/Reviews/ReviewItem";
@@ -27,8 +27,12 @@ const Dashboard = () => {
   };
   useEffect(() => {
     const run = async () => {
-      const data = await getProfile(details?.id);
-      if (data) setItineraries(data);
+      try {
+        const data = await getProfile(details?.id);
+        if (data) setItineraries(data);
+      } catch (err) {
+        console.log(err);
+      }
     };
     if (details?.id) run();
   }, []);
@@ -83,7 +87,7 @@ const Dashboard = () => {
           {toggle ? (
             <Itineraries itineraries={itineraries} />
           ) : (
-            <Profile user={user} />
+            <NewProfile user={user} />
           )}
         </div>
       </div>

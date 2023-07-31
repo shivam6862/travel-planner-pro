@@ -1,3 +1,4 @@
+"use client";
 import classes from "../../styles/Dashboard.module.css";
 const Profile = ({ user }) => {
   return (

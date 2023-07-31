@@ -9,9 +9,7 @@ import {
   Pane,
   Circle,
 } from "react-leaflet";
-import { useMapEvents } from "react-leaflet";
 import RoutingMachine from "./RoutingControl";
-import { Box } from "@mui/material";
 const maps = {
   base: "https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=6HsWF1PPM2UmlGH3TpIe",
 };

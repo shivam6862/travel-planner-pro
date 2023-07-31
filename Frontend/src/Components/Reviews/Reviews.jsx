@@ -29,6 +29,7 @@ const Reviews = () => {
     };
     callFunction();
   }, []);
+  console.log(data);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

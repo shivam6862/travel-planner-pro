@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import PlaceCard from "../Components/PlaceCard/PlaceCard";
-import SelectPlace from "../Components/SelectPlace";
+// import SelectPlace from "../Components/SelectPlace";
+import NewSelectPlace from "../Components/NewSelectPlace";
 import Auth from "../Components/Authentication/Auth";
 import classes from "../styles/Home.module.css";
 import Vacation from "../Components/Vacation/Vacation";
@@ -32,7 +33,8 @@ export default function Home() {
       <Land />
       <Auth />
       <About />
-      <SelectPlace setSearchTerm={setSearchTerm} />
+      {/* <SelectPlace setSearchTerm={setSearchTerm} /> */}
+      <NewSelectPlace setSearchTerm={setSearchTerm} />
       <div style={{ width: "90%" }}>
         <Map searchTerm={searchTerm} showRoutes={true} />
       </div>
