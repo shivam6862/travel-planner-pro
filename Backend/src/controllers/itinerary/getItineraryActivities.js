@@ -15,7 +15,7 @@ module.exports = getItineraryActivities = async (
     //     Authorization: "Bearer " + access_token,
     //   },
     // });
-    const activitiesResponse = await axios.post(url, {
+    const activitiesResponse = await axios.get(url, {
       headers: {
         Authorization: "Bearer " + access_token,
       },

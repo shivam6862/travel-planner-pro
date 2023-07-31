@@ -32,14 +32,17 @@ const ItinerariesItem = ({ itinerary }) => {
             {itinerary?.dateTo}
           </div>
         </div>
-        <div className={classes["profile-item"]}>
-          <div className={classes["profile-item-heading"]}>Stops</div>
-          {itinerary?.stops.length > 0 &&
-            itinerary?.stops.map((stop) => (
+        {itinerary?.stops.length > 0 && (
+          <div className={classes["profile-item"]}>
+            <div className={classes["profile-item-heading"]}>Stops</div>
+
+            {itinerary?.stops.map((stop) => (
               <div className={classes["profile-item-content"]}>{stop.name}</div>
             ))}
-        </div>
+          </div>
+        )}
       </div>
+
       <button
         className={classes["edit-btn"]}
         onClick={() => router.push(`/itinerary/${itinerary.id}`)}
