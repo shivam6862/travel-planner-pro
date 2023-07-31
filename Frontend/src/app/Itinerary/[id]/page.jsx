@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import classes from "../../../styles/Itinerary.module.css";
-import TopNavigation from "../../../Components/Itinerary/TopNavigation";
-import MapItinerary from "../../../Components/Itinerary/MapItinerary";
-import Restaurants from "../../../Components/Itinerary/Restaurants";
+import TopNavigation from "../../../components/Itinerary/TopNavigation";
+import MapItinerary from "../../../components/Itinerary/MapItinerary";
+import Restaurants from "../../../components/Itinerary/Restaurants";
 import useItineraryActivities from "../../../Hook/amadeus/useItineraryAcitivities";
 
 const Itinerary = () => {
