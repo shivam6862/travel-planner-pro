@@ -100,6 +100,31 @@
 .edit-btn:hover {
   background-color: rgb(240 242 246);
 }
+.headingReview {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  color: var(--dark-color);
+  font-weight: 600;
+}
+.reviewsInput {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 /* .heading {
   font-size: 3rem;
   padding-bottom: 1rem;

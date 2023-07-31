@@ -36,9 +36,9 @@ const Reviews = () => {
     observer.observe(myref.current);
   }, []);
 
-  const setDataInput = (data) => {
-    setData((prev) => [...prev, data]);
-  };
+  // const setDataInput = (data) => {
+  //   setData((prev) => [...prev, data]);
+  // };
 
   return (
     <div className={classes.container} ref={myref}>
@@ -50,7 +50,7 @@ const Reviews = () => {
         {data.map((people, index) => (
           <ReviewsItem key={index} data={people} />
         ))}
-        <ReviewsInput setDataInput={setDataInput} />
+        {/* <ReviewsInput setDataInput={setDataInput} /> */}
       </div>
     </div>
   );

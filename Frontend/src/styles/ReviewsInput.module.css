@@ -6,15 +6,15 @@
   gap: 1rem;
   padding: 1rem;
   border-bottom: 1px solid var(--yellow-color);
-  max-width: 400px;
-  min-width: 400px;
-  box-shadow: var(--box-shadow);
+  max-width: 100%;
+  min-width: 100%;
+  border: 1px solid rgb(208 219 240);
+  border-radius: 0.25rem;
   position: relative;
-  padding-bottom: 5rem;
 }
 .headingstar {
   font-size: 1.5rem;
-  color: var(--yellow-color);
+  color: var(--dark-color);
   font-weight: 600;
 }
 .starContainer {
@@ -30,7 +30,7 @@
   width: 100%;
 }
 .reviewinput > textarea {
-  border: 1px solid var(--yellow-color);
+  border: 1px solid rgb(208 219 240);
   border-radius: 5px;
   cursor: pointer;
   font-size: 1.2rem;
@@ -40,53 +40,31 @@
   width: -webkit-fill-available;
   padding: 0.8rem;
   background: #ffffff;
-  max-width: 360px;
-  min-width: 360px;
+  max-width: 100%;
+  min-width: 100%;
 }
 .reviewinput > textarea:focus {
-  border: 1.2px solid var(--yellow-color);
-  caret-color: var(--yellow-color);
+  border: 1.2px solid rgb(208 219 240);
+  caret-color: rgb(208 219 240);
 }
 .buttonSubmit {
-  padding: 1rem 2rem;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--white-color);
-  background: var(--yellow-color);
-  border: none;
-  outline: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
+  all: unset;
+  align-self: flex-end;
+  background-color: rgb(247 249 253);
+  color: #000000;
+  border-radius: 5px;
+  padding: 0.5rem 1.5rem;
+  font-size: 12px;
   font-weight: bold;
-  text-transform: uppercase;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-transform: none;
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: var(--transition);
-  z-index: 2;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  transition: all 0.2s;
+  border: 1px solid rgb(208 219 240);
 }
-.buttonSubmit:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--dark-color);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1),
-    -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
-  -webkit-transform: scaleY(0);
-  -webkit-transform-origin: bottom;
-  -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
-  z-index: -1;
-}
-.buttonSubmit:hover:before {
-  -webkit-transform: scaleY(1.5);
-  transform: scaleY(1.5);
+
+.buttonSubmit:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
