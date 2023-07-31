@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import classes from "../../styles/PlaceCard.module.css";
-import Button from "../../components/Button";
+import Button from "../Button";
 
 const PlaceCardItem = ({ place }) => {
   return (

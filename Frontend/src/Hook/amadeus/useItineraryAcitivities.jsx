@@ -15,9 +15,10 @@ const useItineraryActivities = (itineraryId) => {
     activities: [],
   });
   const { fetchPersonalDetails } = useLocationLocalStorage();
-  const { id } = fetchPersonalDetails();
+
   const getData = async () => {
     try {
+      const { id } = fetchPersonalDetails();
       const response = await fetch(
         `http://localhost:8080/user/get-itinerary-activities/${id}/${itineraryId}`
       );
@@ -30,7 +31,7 @@ const useItineraryActivities = (itineraryId) => {
 
   useEffect(() => {
     getData();
-  }, [itineraryId, id]);
+  }, [itineraryId]);
 
   return { data };
 };

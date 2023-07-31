@@ -15,7 +15,7 @@ const MapItinerary = ({ searchTerm }) => {
           <Button name={"Hotels"} />
         </div>
       </div>
-      <Map searchTerm={searchTerm} showRoutes={false} />
+      <Map searchTerm={searchTerm} showRoutes={true} />
     </div>
   );
 };

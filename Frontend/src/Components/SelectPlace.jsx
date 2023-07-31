@@ -37,6 +37,7 @@ const SelectPlace = ({ setSearchTerm }) => {
   ]);
   const [showTo, setShowTo] = useState(false);
   const [showFrom, setShowFrom] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const { fetchPersonalDetails } = useLocationLocalStorage();
   const router = useRouter();
   const handleChange = (name) => (event) => {
@@ -49,16 +50,20 @@ const SelectPlace = ({ setSearchTerm }) => {
   const autoCompleteTo = useAutoComplete(values.to);
   const autoCompleteFrom = useAutoComplete(values.from);
   const addRoute = async () => {
+    const id = fetchPersonalDetails();
+    if (!id) {
+      setShowPopup(true);
+      return;
+    }
     if (!values.from || !values.to || !values.dateFrom || !values.dateTo)
       return;
     try {
-      const { id } = fetchPersonalDetails();
       const stops = arrayStop.map((stop) =>
         stop.value.name.length > 0 ? stop.value : null
       );
       const itinerary = { ...values, stops: stops };
       const response = await fetch(
-        `http://localhost:8080/user/add-itinerary/${id}`,
+        `http://localhost:8080/user/add-itinerary/${id.id}`,
         {
           method: "POST",
           headers: {
@@ -405,7 +410,7 @@ const SelectPlace = ({ setSearchTerm }) => {
       <div className={classes.buttons}>
         <Button name={"Add Route"} onClick={addRoute} />
       </div>
-      <Popup />
+      {showPopup && <Popup setShowPopup={setShowPopup} />}
     </Box>
   );
 };

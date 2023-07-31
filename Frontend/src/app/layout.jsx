@@ -3,13 +3,13 @@ import "../styles/globals.css";
 import "../styles/leaflet.css";
 import { Inter } from "next/font/google";
 import { AuthenticationContextProvider } from "../Store/Authentication-context";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 import Notifications from "../Components/Notification/Notifications";
 import { NotificationContextProvider } from "../Store/Notification-context";
-import Footer from "../components/Footer";
+import Footer from "../Components/Footer";
 import Script from "next/script";
-import NewNavbar from "../components/NewNavbar";
+import NewNavbar from "../Components/NewNavbar";
 
 // export const metadata = {
 //   title: "Travel Planner",
@@ -30,10 +30,7 @@ export default function RootLayout({ children }) {
             <Footer />
           </AuthenticationContextProvider>
         </NotificationContextProvider>
-        <Script
-          src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        />
+        <Script />
       </body>
     </html>
   );

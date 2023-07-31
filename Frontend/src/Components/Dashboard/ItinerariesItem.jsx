@@ -32,16 +32,13 @@ const ItinerariesItem = ({ itinerary }) => {
             {itinerary?.dateTo}
           </div>
         </div>
-        {/* <div className={classes["profile-item"]}>
+        <div className={classes["profile-item"]}>
           <div className={classes["profile-item-heading"]}>Stops</div>
-          {itinerary.stops.length > 0 && 
-            {itnerary.stops.map(stop => (
-            <div className={classes["profile-item-content"]}>
-            {stop}
-          </div>
+          {itinerary?.stops.length > 0 &&
+            itinerary?.stops.map((stop) => (
+              <div className={classes["profile-item-content"]}>{stop.name}</div>
             ))}
-        }
-        </div> */}
+        </div>
       </div>
       <button
         className={classes["edit-btn"]}

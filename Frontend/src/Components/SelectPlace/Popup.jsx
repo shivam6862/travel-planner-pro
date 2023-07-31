@@ -1,8 +1,15 @@
+"use client";
 import React from "react";
 import Button from "../Button";
+import { useContext } from "react";
+import AuthenticationContext from "../../Store/Authentication-context";
 
-const Popup = () => {
-  const submit = () => {};
+const Popup = ({ setShowPopup }) => {
+  const authenticationContextCtx = useContext(AuthenticationContext);
+  const submit = () => {
+    setShowPopup(false);
+    authenticationContextCtx.onShow("LogInOpen");
+  };
   return (
     <div>
       <div
@@ -25,36 +32,35 @@ const Popup = () => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "50vw",
-          height: "50vh",
           backgroundColor: "var(--white-light-color)",
           boxShadow: "var(--box-shadow:)",
           display: "flex",
           flexDirection: "column",
-          gap: "2rem",
+          gap: "1rem",
           alignItems: "center",
           justifyContent: "center",
           zIndex: "1000000",
           borderRadius: "2rem",
+          padding: "2rem 4rem",
         }}
       >
         <div
           style={{
-            fontSize: "2rem",
+            fontSize: "1.3rem",
             paddingBottom: "1rem",
             paddingLeft: "1rem",
             color: "var(--yellow-color)",
             fontWeight: "600",
           }}
         >
-          Are you sure to make Itinerary
+          Login to add itinerary.
         </div>
         <div
           style={{
             width: "120px",
           }}
         >
-          <Button name="Make it" onClick={submit} />
+          <Button name="Login" onClick={submit} />
         </div>
       </div>
     </div>

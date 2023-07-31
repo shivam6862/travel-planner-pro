@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../styles/Dashboard.module.css";
 import { useLocationLocalStorage } from "../../Hook/useLocationLocalStorage";
-import Profile from "../../components/Dashboard/Profile";
-import Itineraries from "../../components/Dashboard/Itineraries";
-import ReviewsInput from "../../components/Reviews/ReviewInput";
-import ReviewsItem from "../../components/Reviews/ReviewItem";
+import Profile from "../../Components/Dashboard/Profile";
+import Itineraries from "../../Components/Dashboard/Itineraries";
+import ReviewsInput from "../../Components/Reviews/ReviewInput";
+import ReviewsItem from "../../Components/Reviews/ReviewItem";
 
 const getProfile = async () => {
   try {

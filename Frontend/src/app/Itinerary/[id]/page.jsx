@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import classes from "../../../styles/Itinerary.module.css";
-import TopNavigation from "../../../components/Itinerary/TopNavigation";
-import MapItinerary from "../../../components/Itinerary/MapItinerary";
-import Restaurants from "../../../components/Itinerary/Restaurants";
+import TopNavigation from "../../../Components/Itinerary/TopNavigation";
+import MapItinerary from "../../../Components/Itinerary/MapItinerary";
+import Restaurants from "../../../Components/Itinerary/Restaurants";
 import useItineraryActivities from "../../../Hook/amadeus/useItineraryAcitivities";
 
 const Itinerary = () => {
@@ -14,19 +14,24 @@ const Itinerary = () => {
   const { itinerary, activities } = data;
   const [searchTerms, setSearchTerm] = useState([]);
   const handleChange = (name) => (event) => {
-    setValues({ ...values, [name]: event.target.value });
+    // setValues({ ...values, [name]: event.target.value });
   };
   console.log(data);
 
   useEffect(() => {
-    if (activities.length > 0) {
-      const searches = activities.map((hotel) => [
-        hotel.geoCode.latitude,
-        hotel.geoCode.longitude,
-      ]);
-      setSearchTerm([...searches]);
+    if (itinerary.from.coords) {
+      const route = [[itinerary.from?.coords.lat, itinerary.from?.coords.lon]];
+      if (itinerary.stops.length > 0) {
+        itinerary.stops.map((stop) => {
+          route.push([stop.coords.lat, stop.coords.lon]);
+        });
+      }
+      route.push([itinerary.to?.coords.lat, itinerary.to?.coords.lon]);
+      console.log(route);
+      setSearchTerm([...route]);
     }
   }, [data]);
+  console.log(searchTerms);
 
   return (
     <div className={classes.container}>
