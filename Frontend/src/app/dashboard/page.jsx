@@ -12,7 +12,7 @@ const getProfile = async () => {
     const { fetchPersonalDetails } = useLocationLocalStorage();
     const { id } = fetchPersonalDetails();
     if (!id) return;
-    const url = `http://localhost:8080/user/get-profile/${id}`;
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/get-profile/${id}`;
 
     const response = await fetch(url);
     const result = await response.json();

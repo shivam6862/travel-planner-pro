@@ -63,7 +63,7 @@ const SelectPlace = ({ setSearchTerm }) => {
       );
       const itinerary = { ...values, stops: stops };
       const response = await fetch(
-        `http://localhost:8080/user/add-itinerary/${id.id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/add-itinerary/${id.id}`,
         {
           method: "POST",
           headers: {

@@ -20,7 +20,7 @@ const useItineraryActivities = (itineraryId) => {
     try {
       const { id } = fetchPersonalDetails();
       const response = await fetch(
-        `http://localhost:8080/user/get-itinerary-activities/${id}/${itineraryId}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/get-itinerary-activities/${id}/${itineraryId}`
       );
       const data = await response.json();
       if (response.ok) setData(data.response);
