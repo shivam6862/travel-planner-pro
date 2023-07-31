@@ -4,8 +4,9 @@ import SvgStarWhite from "../../../Public/SvgStarWhite";
 import classes from "../../styles/Reviews.module.css";
 
 const StarReviews = ({ index, setCountStar }) => {
+  const newIndex = Math.trunc(index);
   const maxStars = 5;
-  const coloredStarArray = Array(index)
+  const coloredStarArray = Array(newIndex)
     .fill()
     .map((_, i) => (
       <div
@@ -18,7 +19,7 @@ const StarReviews = ({ index, setCountStar }) => {
         <SvgStarColor />
       </div>
     ));
-  const whiteStarArray = Array(maxStars - index)
+  const whiteStarArray = Array(maxStars - newIndex)
     .fill()
     .map((_, i) => (
       <div

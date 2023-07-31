@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 
 const RestaurantsItem = ({ data }) => {
   const router = useRouter();
+  console.log(data.rating);
   return (
     <div className={classes.containerRestaurantsItem}>
       <div className={classes.RestaurantsItemLeft}>
@@ -15,6 +16,9 @@ const RestaurantsItem = ({ data }) => {
         </div>
         <div className={classes.leftRight}>
           <h1>{data.name}</h1>
+          <div className={classes.rating}>
+            <Star index={data.rating || 3} />
+          </div>
           <div className={classes.rating}>
             <Button
               sx={{

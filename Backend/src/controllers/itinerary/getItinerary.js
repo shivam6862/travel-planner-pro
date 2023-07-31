@@ -18,7 +18,7 @@ module.exports = getItinerary = async (userid, itineraryId) => {
           dateTo: new Date(item.itinerary.dateTo).toLocaleDateString("en-US"),
         };
       });
-    return data;
+    return data[0];
   } catch (err) {
     console.log(err.message);
     throw err;

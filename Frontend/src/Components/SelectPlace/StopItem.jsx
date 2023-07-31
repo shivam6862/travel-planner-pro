@@ -67,16 +67,11 @@ import marker from "../../../public/marker-icon.png";
 //     </div>
 import { TextField, Box, InputAdornment } from "@mui/material";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
-const StopItem = ({
-  id,
-  deleteStop,
-  addStop,
-  newStop,
-  place,
-  setplace,
-  autoComplete,
-}) => {
+import useAutoComplete from "../../Hook/useAutoComplete";
+const StopItem = ({ id, deleteStop, addStop, newStop, place, setplace }) => {
   const [showTo, setShowTo] = useState(false);
+  const [search, setSearch] = useState("");
+  const { autoComplete } = useAutoComplete(search);
   return (
     <Box
       sx={{
@@ -94,9 +89,9 @@ const StopItem = ({
       >
         <TextField
           label="Stop"
-          value={place}
+          value={search}
           onChange={(e) => {
-            setplace(e.target.value, id);
+            setSearch(e.target.value, id);
           }}
           onFocus={() => setShowTo(true)}
           sx={{
@@ -134,6 +129,7 @@ const StopItem = ({
                     },
                     id
                   );
+                  setSearch(place.display_name);
 
                   setShowTo(false);
                 }}

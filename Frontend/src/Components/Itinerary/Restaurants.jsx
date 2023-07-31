@@ -3,6 +3,7 @@ import classes from "../../styles/Itinerary.module.css";
 import RestaurantsItem from "./RestaurantsItem";
 
 const Restaurants = ({ data }) => {
+  console.log(data);
   return (
     <div className={classes.containerRestaurants}>
       {data.map((item) => (

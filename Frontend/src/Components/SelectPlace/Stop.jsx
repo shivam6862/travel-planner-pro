@@ -39,10 +39,6 @@ const Stop = ({ arrayStop, setArrayStop }) => {
     }
   };
 
-  const { autoComplete } = useAutoComplete(
-    arrayStop[arrayStop.length - 1].value
-  );
-
   return (
     // <div className={classes.container}>
     //   {arrayStop.map((item, index) => (
@@ -73,7 +69,6 @@ const Stop = ({ arrayStop, setArrayStop }) => {
           deleteStop={deleteStop}
           addStop={addStop}
           setplace={setplace}
-          autoComplete={autoComplete}
         />
       ))}
     </Box>

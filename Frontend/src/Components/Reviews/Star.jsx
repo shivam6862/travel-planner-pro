@@ -4,9 +4,10 @@ import SvgStarWhite from "../../../Public/SvgStarWhite";
 import classes from "../../styles/Reviews.module.css";
 
 const Star = ({ index }) => {
+  const newIndex = Math.trunc(index);
   const maxStars = 5;
-  const coloredStars = Math.min(index, maxStars);
-  const whiteStars = Math.max(maxStars - index, 0);
+  const coloredStars = Math.min(newIndex, maxStars);
+  const whiteStars = Math.max(maxStars - newIndex, 0);
   const coloredStarArray = Array(coloredStars)
     .fill()
     .map((_, i) => (

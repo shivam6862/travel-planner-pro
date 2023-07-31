@@ -1,6 +1,7 @@
 const express = require("express");
 const routes = require("./routes");
 const mongoose = require("mongoose");
+const { scheduleTask, tasks } = require("./scheduled-taskes");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -22,7 +23,9 @@ app.use((req, res, next) => {
   );
   next();
 });
-
+tasks.forEach((task) => {
+  scheduleTask(task.handler, task.frequency, app);
+});
 routes.forEach((route) => app[route.method](route.path, route.handler));
 
 mongoose.set("strictQuery", false);
