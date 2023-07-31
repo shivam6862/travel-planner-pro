@@ -7,21 +7,6 @@ import Itineraries from "../../Components/Dashboard/Itineraries";
 import ReviewsInput from "../../Components/Reviews/ReviewInput";
 import ReviewsItem from "../../Components/Reviews/ReviewItem";
 
-const getProfile = async () => {
-  try {
-    const { fetchPersonalDetails } = useLocationLocalStorage();
-    const { id } = fetchPersonalDetails();
-    if (!id) return;
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/get-profile/${id}`;
-
-    const response = await fetch(url);
-    const result = await response.json();
-    if (response.ok) return result.response;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 const Dashboard = () => {
   const [itineraries, setItineraries] = useState([]);
   const [toggle, setToggle] = useState(false);
@@ -29,12 +14,23 @@ const Dashboard = () => {
   const user = getUser();
   console.log(user);
   const { id: userid } = fetchPersonalDetails();
+  const getProfile = async (id) => {
+    try {
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/get-profile/${id}`;
+
+      const response = await fetch(url);
+      const result = await response.json();
+      if (response.ok) return result.response;
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     const run = async () => {
-      const data = await getProfile();
+      const data = await getProfile(userid);
       if (data) setItineraries(data);
     };
-    run();
+    if (userid) run();
   }, []);
 
   const [data, setData] = useState([]);
