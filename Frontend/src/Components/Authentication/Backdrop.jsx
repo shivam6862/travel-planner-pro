@@ -12,7 +12,7 @@ const Backdrop = ({ onClick }) => {
           width: "100vw",
           height: "100vh",
           opacity: "0.7",
-          zIndex: "10",
+          zIndex: "10000",
           display: "block",
           color: "black",
           backgroundColor: "black",

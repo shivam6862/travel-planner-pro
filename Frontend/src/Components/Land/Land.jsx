@@ -41,11 +41,11 @@ const Land = () => {
         </p>
         <Button
           sx={{
-            background: "wheat",
+            background: "#c29d59",
             color: "black",
             fontWeight: 700,
-            width: "100px",
             mt: 3,
+            padding: "1rem",
           }}
         >
           Explore Now

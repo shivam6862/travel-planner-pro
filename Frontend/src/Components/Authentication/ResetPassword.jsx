@@ -4,6 +4,7 @@ import classes from "../../styles/Auth.module.css";
 import Svgcross from "../../../Public/SvgCross";
 import AuthenticationContext from "../../Store/Authentication-context";
 import useAuth from "../../Hook/useAuth";
+import Image from "next/image";
 
 const ResetPassword = () => {
   const { Auth } = useAuth();
@@ -55,7 +56,7 @@ const ResetPassword = () => {
             <div className={classes.underline}> </div>
           </div>
           <div className={classes.part1_right}>
-            <img src="/logo.jpeg" alt="" />
+            <Image src={"/logo1.jpeg"} alt="logo" height="80" width="80" />
           </div>
         </div>
         <div className={classes.form}>
