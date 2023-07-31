@@ -1,4 +1,5 @@
 const getItinerary = require("./getItinerary");
+const axios = require("axios");
 
 module.exports = getItineraryActivities = async (
   userid,
@@ -9,12 +10,17 @@ module.exports = getItineraryActivities = async (
     const response = await getItinerary(userid, itineraryId);
     console.log(response);
     const url = `https://test.api.amadeus.com/v1/shopping/activities?latitude=${response?.to.coords.lat}&longitude=${response?.to.coords.lon}&radius=10`;
-    const activitiesResponse = await fetch(url, {
+    // const activitiesResponse = await fetch(url, {
+    //   headers: {
+    //     Authorization: "Bearer " + access_token,
+    //   },
+    // });
+    const activitiesResponse = await axios.post(url, {
       headers: {
         Authorization: "Bearer " + access_token,
       },
     });
-    const activities = await activitiesResponse.json();
+    const activities = activitiesResponse.data;
     const filteredData = activities.data.map((activity) => ({
       name: activity.name,
       description: activity.shortDescription,

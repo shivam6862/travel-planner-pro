@@ -1,4 +1,5 @@
 const dotenv = require("dotenv");
+const axios = require("axios");
 dotenv.config();
 
 const loadAccessToken = async (symbol) => {
@@ -15,13 +16,14 @@ const loadAccessToken = async (symbol) => {
     client_secret: clientSecret,
   });
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers,
-    body: data,
-  });
-  const history = await response.json();
-  return history;
+  // const response = await fetch(url, {
+  //   method: "POST",
+  //   headers,
+  //   body: data,
+  // });
+  const response = await axios(url, data, { headers });
+  // const history = await response.json();
+  return response.data;
 };
 
 module.exports = { loadAccessToken };
