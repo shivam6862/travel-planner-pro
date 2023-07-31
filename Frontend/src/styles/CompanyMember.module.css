@@ -1,5 +1,5 @@
 .container {
-  min-width: 80vw;
+  /* min-width: 80vw; */
   max-width: 90vw;
 }
 .heading {
@@ -56,5 +56,11 @@
 @media screen and (max-width: 900px) {
   .box {
     justify-content: center;
+  }
+}
+@media screen and (max-width: 350px) {
+  .containerItem {
+    min-width: 90%;
+    padding: 1.5rem 2rem;
   }
 }

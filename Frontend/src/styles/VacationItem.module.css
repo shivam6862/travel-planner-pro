@@ -33,6 +33,12 @@
 .top_vacationCard > img:hover {
   transform: rotateZ(5deg) scale(1.2);
 }
+@media screen and (max-width: 440px) {
+  .top_vacationCard > img {
+    width: 90vw;
+  }
+}
+
 .top_bottom_location {
   position: absolute;
   top: 91%;

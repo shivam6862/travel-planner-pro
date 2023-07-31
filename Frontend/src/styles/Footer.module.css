@@ -62,3 +62,14 @@
   padding: 1rem;
   width: 100%;
 }
+@media screen and (max-width: 410px) {
+  .lowerBox {
+    gap: 1rem;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 220px) {
+  .lowerBox > img {
+    width: 20px;
+  }
+}

@@ -45,7 +45,6 @@
   border-bottom: 1px solid var(--yellow-color);
   max-width: 400px;
   min-width: 400px;
-  /* box-shadow: var(--box-shadow); */
   border: 1px solid rgb(208 219 240);
   border-radius: 0.25rem;
 }
@@ -82,4 +81,9 @@
 .bottom {
   font-size: 0.9rem;
   letter-spacing: 0.5px;
+}
+@media screen and (max-width: 440px) {
+  .container_item {
+    min-width: 90vw;
+  }
 }
