@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import classes from "../styles/SelectPlace.module.css";
 import useAutoComplete from "../Hook/useAutoComplete";
-import marker from "../../public/marker-icon.png";
+import marker from "../../Public/marker-icon.png";
 import Image from "next/image";
 import useLocation from "../Hook/useLocation";
 import useReverseGeocoding from "../Hook/useReverseGeocoding";
