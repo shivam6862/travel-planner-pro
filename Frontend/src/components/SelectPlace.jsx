@@ -14,6 +14,10 @@ import { useRouter } from "next/navigation";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Box, TextField, Button as MButton, IconButton } from "@mui/material";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateRangePicker } from "@mui/x-date-pickers-pro";
 import RoomIcon from "@mui/icons-material/Room";
 import PinDropIcon from "@mui/icons-material/PinDrop";
 import Button from "./Button";
@@ -363,7 +367,7 @@ const SelectPlace = ({ setSearchTerm }) => {
           }}
         >
           {/* <TextField label="Date" /> */}
-          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DateRangePicker"]}>
               <DateRangePicker
                 localeText={{ start: "Check-in", end: "Check-out" }}
@@ -391,7 +395,7 @@ const SelectPlace = ({ setSearchTerm }) => {
                 }}
               />
             </DemoContainer>
-          </LocalizationProvider> */}
+          </LocalizationProvider>
         </Box>
         <Box
           sx={{
