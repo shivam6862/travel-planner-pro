@@ -13,7 +13,7 @@ const Dashboard = () => {
   const { getUser, fetchPersonalDetails } = useLocationLocalStorage();
   const user = getUser();
   console.log(user);
-  const { id: userid } = fetchPersonalDetails();
+  const details = fetchPersonalDetails();
   const getProfile = async (id) => {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/get-profile/${id}`;
@@ -27,10 +27,10 @@ const Dashboard = () => {
   };
   useEffect(() => {
     const run = async () => {
-      const data = await getProfile(userid);
+      const data = await getProfile(details?.id);
       if (data) setItineraries(data);
     };
-    if (userid) run();
+    if (details?.id) run();
   }, []);
 
   const [data, setData] = useState([]);
@@ -38,7 +38,7 @@ const Dashboard = () => {
     const callFunction = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/${userid}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/${details?.id}`,
           {
             method: "GET",
             headers: {
@@ -53,8 +53,8 @@ const Dashboard = () => {
         console.log(err.message);
       }
     };
-    if (userid) callFunction();
-  }, []);
+    if (details?.id) callFunction();
+  }, [details?.id]);
   const setDataInput = (data) => {
     setData((prev) => [...prev, data]);
   };
