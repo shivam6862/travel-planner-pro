@@ -4,6 +4,8 @@ import classes from "../../styles/Dashboard.module.css";
 import { useLocationLocalStorage } from "../../Hook/useLocationLocalStorage";
 import Profile from "../../components/Dashboard/Profile";
 import Itineraries from "../../components/Dashboard/Itineraries";
+import ReviewsInput from "../../components/Reviews/ReviewInput";
+import ReviewsItem from "../../components/Reviews/ReviewItem";
 
 const getProfile = async () => {
   try {
@@ -23,9 +25,10 @@ const getProfile = async () => {
 const Dashboard = () => {
   const [itineraries, setItineraries] = useState([]);
   const [toggle, setToggle] = useState(false);
-  const { getUser } = useLocationLocalStorage();
+  const { getUser, fetchPersonalDetails } = useLocationLocalStorage();
   const user = getUser();
   console.log(user);
+  const userid = fetchPersonalDetails().id;
   useEffect(() => {
     const run = async () => {
       const data = await getProfile();
@@ -33,6 +36,33 @@ const Dashboard = () => {
     };
     run();
   }, []);
+
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const callFunction = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/reviews/${userid}`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const responsedata = await response.json();
+        setData(responsedata.response);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    callFunction();
+  }, []);
+  const setDataInput = (data) => {
+    setData((prev) => [...prev, data]);
+  };
+
   return (
     <div className={classes.container}>
       <h1 className={classes["page-heading"]}>Dashboard</h1>
@@ -60,6 +90,15 @@ const Dashboard = () => {
             <Profile user={user} />
           )}
         </div>
+      </div>
+      <div className={classes.reviewsInput}>
+        <div className={classes.headingReview}>Reviews</div>
+        <div className={classes.box}>
+          {data.map((people, index) => (
+            <ReviewsItem key={index} data={people} />
+          ))}
+        </div>
+        <ReviewsInput setDataInput={setDataInput} />
       </div>
     </div>
   );

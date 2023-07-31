@@ -10,6 +10,7 @@ const ReviewsInput = ({ setDataInput }) => {
   const [description, setDescription] = useState("");
 
   const submitReviews = async () => {
+    if (description.trim().length === 0) return;
     const data = {
       image: "Greece.jpg",
       star: countStar,

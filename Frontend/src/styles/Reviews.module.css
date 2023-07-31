@@ -45,7 +45,9 @@
   border-bottom: 1px solid var(--yellow-color);
   max-width: 400px;
   min-width: 400px;
-  box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
+  border: 1px solid rgb(208 219 240);
+  border-radius: 0.25rem;
 }
 .top {
   display: flex;
