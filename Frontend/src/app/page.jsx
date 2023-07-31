@@ -1,16 +1,16 @@
 "use client";
 import { useState } from "react";
-import PlaceCard from "../Components/PlaceCard/PlaceCard";
-// import SelectPlace from "../Components/SelectPlace";
-import NewSelectPlace from "../Components/NewSelectPlace";
-import Auth from "../Components/Authentication/Auth";
+import PlaceCard from "../components/PlaceCard/PlaceCard";
+// import SelectPlace from "../components/SelectPlace";
+import NewSelectPlace from "../components/NewSelectPlace";
+import Auth from "../components/Authentication/Auth";
 import classes from "../styles/Home.module.css";
-import Vacation from "../Components/Vacation/Vacation";
-import Reviews from "../Components/Reviews/Reviews";
-import CompanyMember from "../Components/CompanyMember/CompanyMember";
-import About from "../Components/About/About";
-import Map from "../Components/NewMap";
-import Land from "../Components/Land/Land";
+import Vacation from "../components/Vacation/Vacation";
+import Reviews from "../components/Reviews/Reviews";
+import CompanyMember from "../components/CompanyMember/CompanyMember";
+import About from "../components/About/About";
+import Map from "../components/NewMap";
+import Land from "../components/Land/Land";
 
 // const getData = async () => {
 //   const response = await fetch(

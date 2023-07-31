@@ -5,9 +5,9 @@ import { useNotification } from "../../../Hook/useNotification";
 import Head from "next/head";
 import classes from "../../../styles/Auth.module.css";
 import useAuth from "../../../Hook/useAuth";
-import SvgOpen from "../../../../Public/SvgOpen";
-import SvgClosed from "../../../../Public/SvgClosed";
-import LoadingSpinner from "../../../Components/LoadingSpinner";
+import SvgOpen from "../../../../public/SvgOpen";
+import SvgClosed from "../../../../public/SvgClosed";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 import Image from "next/image";
 
 const resetpassword = () => {

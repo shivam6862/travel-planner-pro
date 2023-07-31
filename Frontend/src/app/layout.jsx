@@ -4,11 +4,11 @@ import "../styles/leaflet.css";
 import { Inter } from "next/font/google";
 import { AuthenticationContextProvider } from "../Store/Authentication-context";
 const inter = Inter({ subsets: ["latin"] });
-import Notifications from "../Components/Notification/Notifications";
+import Notifications from "../components/Notification/Notifications";
 import { NotificationContextProvider } from "../Store/Notification-context";
-import Footer from "../Components/Footer";
+import Footer from "../components/Footer";
 import Script from "next/script";
-import NewNavbar from "../Components/NewNavbar";
+import NewNavbar from "../components/NewNavbar";
 
 export default function RootLayout({ children }) {
   return (

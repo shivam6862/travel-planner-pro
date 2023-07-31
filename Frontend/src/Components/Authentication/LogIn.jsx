@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useContext } from "react";
 import classes from "../../styles/Auth.module.css";
-import Svgcross from "../../../Public/SvgCross";
+import Svgcross from "../../../public/SvgCross";
 import AuthenticationContext from "../../Store/Authentication-context";
 import useAuth from "../../Hook/useAuth";
-import SvgOpen from "../../../Public/SvgOpen";
-import SvgClosed from "../../../Public/SvgClosed";
+import SvgOpen from "../../../public/SvgOpen";
+import SvgClosed from "../../../public/SvgClosed";
 import Image from "next/image";
 
 const LogIn = () => {

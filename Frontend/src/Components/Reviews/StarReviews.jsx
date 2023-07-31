@@ -1,6 +1,6 @@
 import React from "react";
-import SvgStarColor from "../../../Public/SvgStarColor";
-import SvgStarWhite from "../../../Public/SvgStarWhite";
+import SvgStarColor from "../../../public/SvgStarColor";
+import SvgStarWhite from "../../../public/SvgStarWhite";
 import classes from "../../styles/Reviews.module.css";
 
 const StarReviews = ({ index, setCountStar }) => {
