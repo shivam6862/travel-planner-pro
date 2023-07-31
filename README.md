@@ -31,7 +31,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">travel-planner-pro</h3>
+<h3 align="center">Travel-Planner-Pro</h3>
 
   <p align="center">
     Solution to all you travel planning needs
