@@ -21,6 +21,7 @@ import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 import RoomIcon from "@mui/icons-material/Room";
 import PinDropIcon from "@mui/icons-material/PinDrop";
 import Button from "./Button";
+import Popup from "./SelectPlace/Popup";
 
 const SelectPlace = ({ setSearchTerm }) => {
   const [values, setValues] = useState({
@@ -29,6 +30,7 @@ const SelectPlace = ({ setSearchTerm }) => {
     dateFrom: "",
     dateTo: "",
   });
+
   console.log(values.dateFrom, values.dateTo);
   const [arrayStop, setArrayStop] = useState([
     { id: v4(), value: { name: "", coords: { lat: 0, lon: 0 } }, new: true },
@@ -403,6 +405,7 @@ const SelectPlace = ({ setSearchTerm }) => {
       <div className={classes.buttons}>
         <Button name={"Add Route"} onClick={addRoute} />
       </div>
+      <Popup />
     </Box>
   );
 };
