@@ -115,8 +115,7 @@ Please note: Continuous updates are made to improve user experience and add new 
 
 - [![Next][next.js]][next-url]
 - [![React][react.js]][react-url]
-- [![Vue][vue.js]][vue-url]
-- [![Bootstrap][bootstrap.com]][bootstrap-url]
+- [![Material-UI][material-ui.js]][material-ui-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -156,7 +155,7 @@ Following are needed to run the project:
    ```
 6. Run the frontend server
    ```sh
-    npm start
+    npm run dev
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -220,6 +219,8 @@ Thanks to all our contributers and supporters.
 [next-url]: https://nextjs.org/
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [react-url]: https://reactjs.org/
+[material-ui.js]: https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white
+[material-ui-url]: https://mui.com/
 [vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
 [vue-url]: https://vuejs.org/
 [angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
