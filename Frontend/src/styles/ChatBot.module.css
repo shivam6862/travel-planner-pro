@@ -40,7 +40,7 @@
   animation-play-state: paused;
 }
 .bot-icon.hide {
-  transform: translateY(100px);
+  transform: translateY(400px);
 }
 .bot-icon.show {
   transition-delay: 0.2s;

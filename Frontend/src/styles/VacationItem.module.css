@@ -1,5 +1,6 @@
 .container {
   width: 90vw;
+  overflow: hidden;
 }
 .heading {
   font-size: 2rem;
