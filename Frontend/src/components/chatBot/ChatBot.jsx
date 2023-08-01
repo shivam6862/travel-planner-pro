@@ -1,52 +1,36 @@
-import React, { useState } from "react";
-import useBot from "../../Hook/useBot";
-import classes from "../../styles/ChatBot.module.css";
-import Chat from "./Chat";
-import SendIcon from "@mui/icons-material/Send";
-import SvgCross from "../../../public/SvgCross";
+"use client";
+import { Avatar } from "@mui/material";
+import MessageRoundedIcon from "@mui/icons-material/MessageRounded";
+import styles from "../../styles/ChatBot.module.css";
+import { useState } from "react";
+import ChatContainer from "./ChatContainer";
+const ChatBot = () => {
+  const [toggleChat, setToggleChat] = useState(false);
+  const [chat, setChat] = useState([
+    {
+      message: "Hello!",
+      isUser: "false",
+    },
+  ]);
 
-const ChatBot = ({ setToggleChat, chat, setChat }) => {
-  const { check, answer } = useBot();
-  const [question, setQuestion] = useState("");
-  const callBot = async () => {
-    if (question.trim().length == 0) return;
-    setChat((prev) => [...prev, { message: question, isUser: "true" }]);
-    const response = await answer(question);
-    setQuestion("");
-    if (response?.length > 0) {
-      setChat((prev) => [
-        ...prev,
-        { message: response[0].text, isUser: "false" },
-      ]);
-    }
-  };
+  const botIconClassName = `${styles["bot-icon"]} ${
+    toggleChat ? styles.hide : styles.show
+  }`;
+
   return (
-    <div className={classes.container}>
-      <div
-        className={classes.cross}
-        onClick={() => {
-          setToggleChat(false);
-        }}
-      >
-        <SvgCross />
+    <>
+      <div className={botIconClassName} onClick={() => setToggleChat(true)}>
+        <Avatar sx={{ bgcolor: "blue", width: 50, height: 50 }}>
+          <MessageRoundedIcon sx={{ width: 30, height: 30 }} />
+        </Avatar>
       </div>
-      <div className={classes.chatBotChat}>
-        <Chat chat={chat} />
-      </div>
-      <input
-        type="text"
-        name="chat"
-        id="chat"
-        placeholder="Ask something"
-        value={question}
-        onChange={(e) => {
-          setQuestion(e.target.value);
-        }}
+      <ChatContainer
+        setChat={setChat}
+        setToggleChat={setToggleChat}
+        chat={chat}
+        toggleChat={toggleChat}
       />
-      <div onClick={() => callBot()} className={classes.sending}>
-        <SendIcon />
-      </div>
-    </div>
+    </>
   );
 };
 
