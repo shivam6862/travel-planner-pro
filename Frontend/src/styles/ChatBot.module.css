@@ -5,7 +5,7 @@
   z-index: 1400;
   background: var(--white-light-color);
   width: 30%;
-
+  transform: translateY(110%);
   margin: 1rem;
   border-radius: 10px;
   display: flex;
@@ -15,34 +15,14 @@
   width: 370px;
   height: 560px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s linear;
 }
 .container.show {
-  animation-delay: 0.5s;
-  animation: come-chat 0.7s 1;
-  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0.2s;
 }
 .container.hide {
   transform: translateY(110%);
-  animation: remove-chat 0.7s 1;
-  visibility: hidden;
-}
-@keyframes come-chat {
-  0% {
-    transform: translateY(110%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-@keyframes remove-chat {
-  0% {
-    transform: translateY(0);
-    visibility: visible;
-  }
-  100% {
-    transform: translateY(110%);
-    visibility: hidden;
-  }
 }
 
 .bot-icon {
@@ -53,49 +33,30 @@
   cursor: pointer;
   border-radius: 5px;
   z-index: 1500;
+  transition: 0.2s linear;
 }
 
-.bot-icon:hover {
+.bot-icon.show:hover {
   animation-play-state: paused;
 }
 .bot-icon.hide {
   transform: translateY(100px);
-  animation: remove 0.5s 1;
-  visibility: hidden;
 }
 .bot-icon.show {
-  animation-delay: 0.7s;
-  animation: come 0.5s, zoom-in-zoom-out 2s 0.5s infinite;
-  visibility: visible;
+  transition-delay: 0.2s;
+  transform: translateY(0);
+  animation: zoom-in-zoom-out 2s ease infinite;
+  animation-delay: 0.5s;
 }
 @keyframes zoom-in-zoom-out {
   0% {
-    transform: scale(1, 1);
+    transform: scale(1, 1) translateY(0);
   }
   50% {
-    transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2) translateY(0);
   }
   100% {
-    transform: scale(1, 1);
-  }
-}
-@keyframes remove {
-  0% {
-    transform: translateY(0);
-    visibility: visible;
-  }
-  100% {
-    transform: translateY(100px);
-    visibility: hidden;
-  }
-}
-@keyframes come {
-  0% {
-    transform: translateY(100px);
-  }
-  100% {
-    transform: translateY(0px);
-    visibility: visible;
+    transform: scale(1, 1) translateY(0);
   }
 }
 .header {
